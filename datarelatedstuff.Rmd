@@ -8,6 +8,8 @@ runtime: shiny
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggthemes)
 ```
 
 
@@ -52,18 +54,82 @@ ggplot(statesData) +
   xlab("State") + 
   theme(panel.background = element_blank()) + 
   theme(axis.ticks = element_blank()) + 
-  labs(title = "States and Threshold", x = "To Notify the Attorney General") + 
+  labs(title = "States and Threshold", y = "To Notify the Attorney General") + 
   geom_hline(yintercept = seq(0, 1000, by = 250), colour = "gray", size = 1, linetype = 21) + 
-  coord_flip()
+  coord_flip() + 
+  theme(axis.text.y = element_text(size = 7))
 
 
 ```
 
+`r statesData[1,]`
 
 ```{r Shiny App for Data Breach Laws, echo = FALSE}
-axis_vars_trueFalse <- c(
-  "Did the State Modify its Law"
+library(shiny)
+
+axis_vars <- c(
+  "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019", 
+  "With DOB as PI" = "hasDOBasPI", 
+  "With Online (vs. financial) account as PI" = "hasOnlineAccountsasPI", 
+  "\"access\" vs. acquisition" = "requiresAcquisitionNotJustAccess", 
+  "Harm analysis allowed or not" = "harmAnalysisAllowed", 
+  "Government Involvement or not" = "governmentInvolvementRequired", 
+  "Reporting threshold: number of individuals to notify Attorney General" = "thresholdNotifyAG",
+  "Reporting threshold: number of individuals to notify consumer reporting agency" = "thresholdNotifyCRA", 
+  "Time Frame within which to notify" = "timeFrame", 
+  "Requirement for \"service provider\" to report to data owner immediately or not" = "serviceProvidersNotifyImmediately", 
+  "Harm analysis required or not" = "harmAnalysisRequired", 
+  "With Financial (vs. online) account as PI" = "financialAccountInformationisPI"
 )
+
+inputPanel(
+  selectInput("testInput", label = "test input label", choices = axis_vars, 
+              selected = "hasDOBasPI"),
+  sliderInput("testInput2", "test input label 2",
+              0, 1000, c(0, 1000), step = 1)
+) 
+
+
+
+
+sidebarLayout(
+    sidebarPanel(
+      helpText("Create demographic maps with 
+               information from the 2010 US Census."),
+      
+      selectInput("var", 
+                  label = "Choose a variable to display",
+                  choices = c("modifiedLawsin2018or2019", 
+                              "hasDOBasPI"),
+                  selected = "Percent White"),
+      
+      sliderInput("range", 
+                  label = "Range of interest:",
+                  min = 0, max = 100, value = c(0, 100))
+    ),
+    
+    mainPanel(
+      textOutput("selected_var"),
+      textOutput("min_max")
+    )
+  )
+renderText({
+  paste("You have selected", input$var)
+  
+})
+
+renderText({
+  value <- input$var
+  paste(statesData$value)
+  #paste(statesData[which(statesData$modifiedLawsin2018or2019),]$State)
+  
+})
+
+renderText({ 
+    paste("You have chosen a range that goes from",
+          input$range[1], "to", input$range[2])
+  })
+
 ```
 
 
