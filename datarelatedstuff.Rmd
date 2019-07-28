@@ -1,5 +1,5 @@
 ---
-title: "datarelatedstuff"
+title: "Data Related Stuff"
 author: "Dean Gladish"
 date: "July 28, 2019"
 output: html_document
@@ -10,50 +10,70 @@ runtime: shiny
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This R Markdown document is made interactive using Shiny. Unlike the more traditional workflow of creating static reports, you can now create documents that allow your readers to change the assumptions underlying your analysis and see the results immediately. 
 
-To learn more, see [Interactive Documents](http://rmarkdown.rstudio.com/authoring_shiny.html).
+This R Markdown is just an inquiry into the statistics and facts surrounding data breaches in the United States.  Unlike the more traditional form of just summarizing the laws I wanted to create a document which would also give some helpful statistics which could be updated immediately.  
 
-## Inputs and Outputs
+## Let's Begin
 
-You can embed Shiny inputs and outputs in your document. Outputs are automatically updated whenever inputs change.  This demonstrates how a standard R plot can be made interactive by wrapping it in the Shiny `renderPlot` function. The `selectInput` and `sliderInput` functions create the input widgets used to drive the plot.
 
-```{r eruptions, echo=FALSE}
-inputPanel(
-  selectInput("n_breaks", label = "Number of bins:",
-              choices = c(10, 20, 35, 50), selected = 20),
+\ \ \ \ \ \ \ This shiny app is intended to do just that.  
+
+```{r Load and wrangle data, message = FALSE, warning = FALSE, echo = FALSE}
+library(readr)
+
+statesData <- read_csv("statesSimplified.csv")
+
+
+# Remove unneeded columns
+statesData <- subset(statesData, select = c(1:13))
+
+# Replace all NA values with the integer 0
+statesData[is.na(statesData)] <- 0
+
+
+library(ggplot2)
+
+
+
+
+ggplot(data = statesData, mapping = aes(x = modifiedLawsin2018or2019, fill = modifiedLawsin2018or2019)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Did not modify laws 2018-2019", "Modified laws 2018-2019"))
   
-  sliderInput("bw_adjust", label = "Bandwidth adjustment:",
-              min = 0.2, max = 2, value = 1, step = 0.2)
-)
+ggplot(statesData) + 
+  geom_bar(mapping = aes(x = reorder(State, thresholdNotifyAG), y = thresholdNotifyAG), stat = "identity") + 
+  xlab("State") + 
+  theme(panel.background = element_blank()) + 
+  theme(axis.ticks = element_blank()) + 
+  labs(title = "States and Threshold", x = "To Notify the Attorney General") + 
+  geom_hline(yintercept = seq(0, 1000, by = 250), colour = "gray", size = 1, linetype = 21) + 
+  coord_flip()
 
-renderPlot({
-  hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
-       xlab = "Duration (minutes)", main = "Geyser eruption duration")
-  
-  dens <- density(faithful$eruptions, adjust = input$bw_adjust)
-  lines(dens, col = "blue")
-})
+
 ```
 
-## Embedded Application
 
-It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
-
-```{r tabsets, echo=FALSE}
-shinyAppDir(
-  system.file("examples/06_tabsets", package = "shiny"),
-  options = list(
-    width = "100%", height = 550
-  )
+```{r Shiny App for Data Breach Laws, echo = FALSE}
+axis_vars_trueFalse <- c(
+  "Did the State Modify its Law"
 )
 ```
 
-Note the use of the `height` parameter to determine how much vertical space the embedded application should occupy.
 
-You can also use the `shinyApp` function to define an application inline rather then in an external directory.
 
-In all of R code chunks above the `echo = FALSE` attribute is used. This is to prevent the R code within the chunk from rendering in the document alongside the Shiny components.
+
+
+
+
+
+
 
 
 
