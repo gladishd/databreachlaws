@@ -91,6 +91,7 @@ inputPanel(
 
 
 
+library(stringr)
 
 sidebarLayout(
     sidebarPanel(
@@ -99,8 +100,9 @@ sidebarLayout(
       
       selectInput("var", 
                   label = "Choose a variable to display",
-                  choices = c("modifiedLawsin2018or2019", 
-                              "hasDOBasPI"),
+                  choices = c("all states" = paste(":", toString(statesData$State), sep = "<br/>"),
+                    "modifiedLawsin2018or2019" = paste(" which modified their laws in 2018 or 2019:", toString(statesData[which(statesData$modifiedLawsin2018or2019),]$State), sep = "<br/>"), 
+                              "hasDOBasPI" = paste(" which have date of birth as personal information:", toString(statesData[which(statesData$hasDOBasPI),]$State), sep = "<br/>")),
                   selected = "Percent White"),
       
       sliderInput("range", 
@@ -113,17 +115,11 @@ sidebarLayout(
       textOutput("min_max")
     )
   )
-renderText({
-  paste("You have selected", input$var)
+renderUI({
+  HTML(str_replace_all(toString(input$var), ", ", "<br/>"))
   
 })
 
-renderText({
-  value <- input$var
-  paste(statesData$value)
-  #paste(statesData[which(statesData$modifiedLawsin2018or2019),]$State)
-  
-})
 
 renderText({ 
     paste("You have chosen a range that goes from",
