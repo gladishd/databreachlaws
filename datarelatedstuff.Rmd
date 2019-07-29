@@ -49,15 +49,7 @@ ggplot(data = statesData, mapping = aes(x = modifiedLawsin2018or2019, fill = mod
   scale_x_discrete(limit = c("FALSE", "TRUE"),
                      labels = c("Did not modify laws 2018-2019", "Modified laws 2018-2019"))
   
-ggplot(statesData) + 
-  geom_bar(mapping = aes(x = reorder(State, thresholdNotifyAG), y = thresholdNotifyAG), stat = "identity") + 
-  xlab("State") + 
-  theme(panel.background = element_blank()) + 
-  theme(axis.ticks = element_blank()) + 
-  labs(title = "States and Threshold", y = "To Notify the Attorney General") + 
-  geom_hline(yintercept = seq(0, 1000, by = 250), colour = "gray", size = 1, linetype = 21) + 
-  coord_flip() + 
-  theme(axis.text.y = element_text(size = 7))
+
 
 
 ```
@@ -82,27 +74,23 @@ axis_vars <- c(
   "With Financial (vs. online) account as PI" = "financialAccountInformationisPI"
 )
 
-inputPanel(
-  selectInput("testInput", label = "test input label", choices = axis_vars, 
-              selected = "hasDOBasPI"),
-  sliderInput("testInput2", "test input label 2",
-              0, 1000, c(0, 1000), step = 1)
-) 
+
 
 
 
 library(stringr)
 
+statesData$placeHolderColumn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
+
 sidebarLayout(
     sidebarPanel(
-      helpText("Create demographic maps with 
-               information from the 2010 US Census."),
+      helpText("Filter States by the Following Criteria."),
       
       selectInput("var", 
                   label = "Choose a variable to display",
-                  choices = c("all states" = paste(":", toString(statesData$State), sep = "<br/>"),
-                    "modifiedLawsin2018or2019" = paste(" which modified their laws in 2018 or 2019:", toString(statesData[which(statesData$modifiedLawsin2018or2019),]$State), sep = "<br/>"), 
-                              "hasDOBasPI" = paste(" which have date of birth as personal information:", toString(statesData[which(statesData$hasDOBasPI),]$State), sep = "<br/>")),
+                  choices = c("all states" = toString(which(statesData$placeHolderColumn)),
+                    "modifiedLawsin2018or2019" = toString(which(statesData$modifiedLawsin2018or2019)), 
+                              "hasDOBasPI" = toString(which(statesData$hasDOBasPI))),
                   selected = "Percent White"),
       
       sliderInput("range", 
@@ -115,25 +103,81 @@ sidebarLayout(
       textOutput("min_max")
     )
   )
-renderUI({
-  HTML(str_replace_all(toString(input$var), ", ", "<br/>"))
-  
-})
-
-print("")
-
-renderText({ 
-    paste("States with the specified range(", input$range[1], " to ", input$range[2], 
-           ") of Attorney General Notification Thresholds:", sep = "")
-  })
 
 renderUI({
   HTML(str_replace_all(toString(
-    paste(toString(statesData[intersect(which(statesData$thresholdNotifyAG >= input$range[1]), which(statesData$thresholdNotifyAG <= input$range[2])),]$State))
+    paste(toString(statesData[
+      
+      intersect(
+      
+      as.integer(unlist(strsplit(input$var, split = ", "))), 
+      
+      intersect(which(statesData$thresholdNotifyAG >= input$range[1]), which(statesData$thresholdNotifyAG <= input$range[2]))
+      
+      )
+      
+      
+      ,]$State))
     )
     , ", ", "<br/>"))
 })
 
+
+
+#-------------------------------------------------------------------------------------------
+
+
+
+
+axis_vars_graph2 <- c(
+  "Reporting threshold: number of individuals to notify Attorney General" = "thresholdNotifyAG",
+  "Reporting threshold: number of individuals to notify consumer reporting agency" = "thresholdNotifyCRA", 
+  "Time Frame within which to notify" = "timeFrame"
+)
+inputPanel(
+  
+  selectInput("yvar", label = "Y-axis variable", choices = axis_vars_graph2, 
+              selected = "Cost_of_Revenue")
+)
+
+# This part is not the best way to code this.  How else can this be done (for example, by using aes_string instead of aes)?  
+renderPlot({
+  if (input$yvar == "thresholdNotifyAG") {
+    ggplot(statesData) + 
+  geom_bar(mapping = aes(x = reorder(State, thresholdNotifyAG), y = thresholdNotifyAG), stat = "identity") + 
+  xlab("State") + 
+  theme(panel.background = element_blank()) + 
+  theme(axis.ticks = element_blank()) + 
+  labs(title = "States and Threshold", y = "To Notify Attorney General") + 
+  geom_hline(yintercept = seq(0, 1000, by = 250), colour = "gray", size = 1, linetype = 21) + 
+  coord_flip() + 
+  theme(axis.text.y = element_text(size = 7))
+  }
+  
+  else if (input$yvar == "thresholdNotifyCRA") {
+    ggplot(statesData) + 
+  geom_bar(mapping = aes(x = reorder(State, thresholdNotifyCRA), y = thresholdNotifyCRA), stat = "identity") + 
+  xlab("State") + 
+  theme(panel.background = element_blank()) + 
+  theme(axis.ticks = element_blank()) + 
+  labs(title = "States and Threshold", y = "To Notify Consumer Reporting Agencies") + 
+  geom_hline(yintercept = seq(0, 10000, by = 1000), colour = "gray", size = 1, linetype = 21) + 
+  coord_flip() + 
+  theme(axis.text.y = element_text(size = 7))
+  }
+  
+  else if (input$yvar == "timeFrame") {
+    ggplot(statesData) + 
+  geom_bar(mapping = aes(x = reorder(State, timeFrame), y = timeFrame), stat = "identity") + 
+  xlab("State") + 
+  theme(panel.background = element_blank()) + 
+  theme(axis.ticks = element_blank()) + 
+  labs(title = "States and Threshold", y = "How Long to Disclose") + 
+  geom_hline(yintercept = seq(0, 100, by = 10), colour = "gray", size = 1, linetype = 21) + 
+  coord_flip() + 
+  theme(axis.text.y = element_text(size = 7))
+  }
+})
 ```
 
 
