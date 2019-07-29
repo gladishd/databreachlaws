@@ -10,6 +10,9 @@ runtime: shiny
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(ggthemes)
+library(shinyWidgets)
+setBackgroundColor("black")
+
 ```
 
 
@@ -38,17 +41,7 @@ library(ggplot2)
 
 
 
-ggplot(data = statesData, mapping = aes(x = modifiedLawsin2018or2019, fill = modifiedLawsin2018or2019)) + 
-  geom_bar() + 
-  labs(title = "Proportion of States", x = "", y = "Number of States") + 
-  theme(panel.background = element_blank()) + 
-  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
-  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
-  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
-  theme(legend.position = "none") + 
-  scale_x_discrete(limit = c("FALSE", "TRUE"),
-                     labels = c("Did not modify laws 2018-2019", "Modified laws 2018-2019"))
-  
+
 
 
 
@@ -178,11 +171,158 @@ renderPlot({
   theme(axis.text.y = element_text(size = 7))
   }
 })
+
+
+
+
+
+
+
+
+
+
+axis_vars_graphProportions <- c(
+  "Modified Laws in 2018 or 2019" = "modifiedLawsin2018or2019", 
+  "Date of Birth is Considered to be Personal Information" = "hasDOBasPI",
+  "Online Accounts are Personal Information" = "hasOnlineAccountsasPI",
+  "Definition of Data Breach Requires Acquisition (not just access)" = "requiresAcquisitionNotJustAccess", 
+  "Harm Analysis is Allowed" = "harmAnalysisAllowed", 
+  "Government Involvement is Required" = "governmentInvolvementRequired",
+  "Service Providers shall be Notified Immediately" = "serviceProvidersNotifyImmediately",
+  "Harm Analysis is Required" = "harmAnalysisRequired", 
+  "Financial Account Information is Personal Information" = "financialAccountInformationisPI"
+)
+inputPanel(
+  
+  selectInput("zvar", label = "Variable", choices = axis_vars_graphProportions, 
+              selected = "Cost_of_Revenue")
+)
+
+# Again, this part is not the best way to code this.  How else can this be done without hardcoding all the graphs?  
+renderPlot({
+  if (input$zvar == "modifiedLawsin2018or2019"){
+    ggplot(data = statesData, mapping = aes(x = modifiedLawsin2018or2019, fill = modifiedLawsin2018or2019)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Did not modify laws 2018-2019", "Modified laws 2018-2019"))
+  }
+  
+  else if (input$zvar == "hasDOBasPI") {
+    ggplot(data = statesData, mapping = aes(x = hasDOBasPI, fill = hasDOBasPI)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Date of Birth is not PI", "Date of Birth is PI"))
+  }
+  
+  else if (input$zvar == "hasOnlineAccountsasPI") {
+    ggplot(data = statesData, mapping = aes(x = hasOnlineAccountsasPI, fill = hasOnlineAccountsasPI)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Online Accounts are not PI", "Online Accounts are PI"))
+  }
+  
+  else if (input$zvar == "requiresAcquisitionNotJustAccess") {
+    ggplot(data = statesData, mapping = aes(x = requiresAcquisitionNotJustAccess, fill = requiresAcquisitionNotJustAccess)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Access", "Acquisition"))
+  }
+  
+  else if (input$zvar == "harmAnalysisAllowed") {
+    ggplot(data = statesData, mapping = aes(x = harmAnalysisAllowed, fill = harmAnalysisAllowed)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Harm Analysis Not Allowed", "Harm Analysis Allowed"))
+  }
+  
+  else if (input$zvar == "governmentInvolvementRequired") {
+    ggplot(data = statesData, mapping = aes(x = governmentInvolvementRequired, fill = governmentInvolvementRequired)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Government Involvement is Required", "Government Involvement is Not Required"))
+  }
+  
+  else if (input$zvar == "serviceProvidersNotifyImmediately") {
+    ggplot(data = statesData, mapping = aes(x = serviceProvidersNotifyImmediately, fill = serviceProvidersNotifyImmediately)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Service Providers do not need to immediately notify", "Service Providers need to immediately notify"))
+  }
+  
+  else if (input$zvar == "harmAnalysisRequired") {
+    ggplot(data = statesData, mapping = aes(x = harmAnalysisRequired, fill = harmAnalysisRequired)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Harm Analysis is Not Required", "Harm Analysis is Required"))
+  }
+  
+  else if (input$zvar == "financialAccountInformationisPI") {
+    ggplot(data = statesData, mapping = aes(x = financialAccountInformationisPI, fill = financialAccountInformationisPI)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("Financial Account Information is Not PI", "Financial Account Information is PI"))
+  }
+
+})
+
+
+
+  
 ```
-
-
-
-
 
 
 
