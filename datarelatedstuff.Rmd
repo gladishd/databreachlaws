@@ -2,7 +2,14 @@
 title: "Data Related Stuff"
 author: "Dean Gladish"
 date: "July 28, 2019"
-output: html_document
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
+    highlight: tango
+    css: custom.css
 runtime: shiny
 ---
 

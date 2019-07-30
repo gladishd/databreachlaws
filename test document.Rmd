@@ -2,9 +2,14 @@
 title: "Untitled"
 author: "Dean Gladish"
 date: "July 29, 2019"
-output: html_document:
-    theme: united
+output:
+  rmdformats::readthedown:
+    self_contained: true
+    thumbnails: true
+    lightbox: true
+    gallery: false
     highlight: tango
+   
 ---
 
 ```{r setup, include=FALSE}
