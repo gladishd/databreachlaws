@@ -616,7 +616,7 @@ renderPlot({
 ```
 
 ***
-## Reference Table
+## Reference Table/
 ***
 
 ```{r, message = F, warning = F, echo = F}
