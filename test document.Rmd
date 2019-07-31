@@ -9,7 +9,7 @@ output:
     lightbox: true
     gallery: false
     highlight: tango
-   
+    css: custom.css
 ---
 
 ```{r setup, include=FALSE}

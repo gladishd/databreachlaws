@@ -1,7 +1,7 @@
 ---
-title: "Data Related Stuff"
+title: "Data Breach Notification Laws"
 author: "Dean Gladish"
-date: "July 28, 2019"
+date: "July 31, 2019"
 output:
   rmdformats::readthedown:
     self_contained: true
@@ -24,12 +24,16 @@ library(shinythemes)
 
 ```
 
-
-This R Markdown is just an inquiry into the statistics and facts surrounding data breaches in the United States.  Unlike the more traditional form of just summarizing the laws I wanted to create a document which would also give some helpful statistics which could be updated immediately.  
+***
 
 ## Let's Begin
 
 ***
+This R Markdown is just an inquiry into the statistics and facts surrounding data breaches in the United States.  Unlike the more traditional form of just summarizing the laws I wanted to create a document which would also give some helpful statistics which could be updated immediately.  
+
+
+
+
 
 \ \ \ \ \ \ \ This shiny app is intended to do just that.  
 
@@ -52,17 +56,71 @@ library(ggplot2)
 
 
 
-
+statesData$placeHolderColumn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 
 
 
 
 ```
 
-`r statesData[1,]`
+***
 
+
+## Filtering States
+
+
+***
 ```{r Shiny App for Data Breach Laws, echo = FALSE}
 library(shiny)
+
+
+# CSS Code for making the buttons look better
+css <- 
+"
+a#more-apps-by-dean {
+display: none;
+}
+body {
+background: #fff;
+}
+.container {
+margin: 0;
+padding: 0px;
+}
+.green {
+background: green;
+}
+#expr-container .selectize-input {
+  font-size: 12px;
+line-height: 12px;
+}
+#expr-container .selectize-dropdown {
+font-size: 12px;
+line-height: 12px;
+}
+#expr-container .selectize-dropdown-content {
+max-height: 225px;
+padding: 0;
+}
+#expr-container .selectize-dropdown-content .option {
+border-bottom: 0px dotted #ccc;
+}
+#submitExpr {
+font-weight: bold;
+font-size: 12px;
+padding: 0px 0px;
+}
+#helpText {
+font-size: 12px;
+}
+#btn {
+font-size: 12px;
+}
+"
+
+
+
+
 
 axis_vars <- c(
   "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019", 
@@ -85,22 +143,140 @@ axis_vars <- c(
 
 library(stringr)
 
-statesData$placeHolderColumn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 
+
+
+
+
+
+#sidebarLayout
 sidebarLayout(
-    sidebarPanel(
+  
+  #sidebarPanel
+    inputPanel(
+  
       helpText("Filter States by the Following Criteria."),
       
+     
       selectInput("var", 
-                  label = "Choose a variable to display",
-                  choices = c("all states" = toString(which(statesData$placeHolderColumn)),
-                    "modifiedLawsin2018or2019" = toString(which(statesData$modifiedLawsin2018or2019)), 
-                              "hasDOBasPI" = toString(which(statesData$hasDOBasPI))),
-                  selected = "Percent White"),
+                  label = "Choose variables to display",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var2", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var3", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var4", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var5", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var6", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var7", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var8", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
+      
+      selectInput("var9", 
+                  label = "",
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  selected = "all states"),
       
       sliderInput("range", 
                   label = "Range of Attorney General Notification Thresholds:",
-                  min = 0, max = 1000, value = c(0, 1000))
+                  min = min(statesData$thresholdNotifyAG), max = max(statesData$thresholdNotifyAG), value = c(min(statesData$thresholdNotifyAG), max(statesData$thresholdNotifyAG)), step = NULL)
+    ,
+    sliderInput("range2", 
+                  label = "Range of Consumer Reporting Agency Notification Thresholds:",
+                  min = min(statesData$thresholdNotifyCRA), max = max(statesData$thresholdNotifyCRA), value = c(min(statesData$thresholdNotifyCRA), max(statesData$thresholdNotifyCRA)), step = NULL)
+    ,
+sliderInput("range3", 
+                  label = "Time Frame for making notifications:",
+                  min = min(statesData$timeFrame), max = max(statesData$timeFrame), value = c(min(statesData$timeFrame), max(statesData$timeFrame)), step = NULL)
     ),
     
     mainPanel(
@@ -109,19 +285,89 @@ sidebarLayout(
     )
   )
 
+
+
 renderUI({
  
   HTML(str_replace_all(toString(
     paste(toString(statesData[
       
-      intersect(
+      intersect( #Variable 9
+        
+        as.integer(unlist(strsplit(input$var9, split = ", "))),
+      
+      intersect( #Variable 8
+        
+        as.integer(unlist(strsplit(input$var8, split = ", "))),
+      
+      intersect( #Variable 7
+        
+        as.integer(unlist(strsplit(input$var7, split = ", "))),
+      
+      intersect( #Variable 6
+        
+        as.integer(unlist(strsplit(input$var6, split = ", "))),
+      
+      intersect( #Variable 5
+        
+        as.integer(unlist(strsplit(input$var5, split = ", "))),
+      
+      intersect( #Variable 4
+        
+        as.integer(unlist(strsplit(input$var4, split = ", "))),
+      
+      intersect( #Variable 3
+        
+        as.integer(unlist(strsplit(input$var3, split = ", "))),
+      
+      intersect( #Variable 2
+        
+        as.integer(unlist(strsplit(input$var2, split = ", "))),
+      
+      
+      intersect( #Variable 1
       
       as.integer(unlist(strsplit(input$var, split = ", "))), 
       
-      intersect(which(statesData$thresholdNotifyAG >= input$range[1]), which(statesData$thresholdNotifyAG <= input$range[2]))
+      
+      #
+      intersect(intersect(which(statesData$timeFrame >= input$range3[1]), which(statesData$timeFrame <= input$range3[2])), # Range 3
+      
+      intersect(
+        
+        
+        intersect(which(statesData$thresholdNotifyAG >= input$range[1]), which(statesData$thresholdNotifyAG <= input$range[2])), # Range 1
+        
+        intersect(which(statesData$thresholdNotifyCRA >= input$range2[1]), which(statesData$thresholdNotifyCRA <= input$range2[2])) # Range 2
+        
+        
+      )
       
       )
       
+      #
+      
+      
+      
+      
+      
+      )
+      
+      )
+      
+      )
+      
+      )
+      
+      )
+      
+      )
+      
+      )
+      
+      )
+      
+      )
       
       ,]$State))
     )
@@ -133,6 +379,19 @@ renderUI({
 #-------------------------------------------------------------------------------------------
 
 
+```
+
+***
+
+## Reporting Thresholds and Time Frame
+
+***
+
+
+```{r, message = F, warning = F, echo = F}
+
+
+
 
 
 axis_vars_graph2 <- c(
@@ -140,10 +399,14 @@ axis_vars_graph2 <- c(
   "Reporting threshold: number of individuals to notify consumer reporting agency" = "thresholdNotifyCRA", 
   "Time Frame within which to notify" = "timeFrame"
 )
-inputPanel(
+fluidRow(
+  shinyjs::useShinyjs(),
+  tags$style(css),
+  div(id = "expr-container",
   
   selectInput("yvar", label = "Y-axis variable", choices = axis_vars_graph2, 
-              selected = "Cost_of_Revenue")
+              selected = "Cost_of_Revenue", width = "600px")
+)
 )
 
 # This part is not the best way to code this.  How else can this be done (for example, by using aes_string instead of aes)?  
@@ -188,6 +451,16 @@ renderPlot({
 
 
 
+```
+
+***
+
+## Proportions of States Which Have Enacted Regulations
+
+***
+
+
+```{r, message = F, warning = F, echo = F}
 
 
 
@@ -205,11 +478,14 @@ axis_vars_graphProportions <- c(
   "Harm Analysis is Required" = "harmAnalysisRequired", 
   "Financial Account Information is Personal Information" = "financialAccountInformationisPI"
 )
-inputPanel(
+fluidRow(
+  shinyjs::useShinyjs(),
+  tags$style(css),
+  div(id = "expr-container",
   
   selectInput("zvar", label = "Variable", choices = axis_vars_graphProportions, 
-              selected = "Cost_of_Revenue")
-  
+              selected = "Cost_of_Revenue", width = "600px")
+  )
 )
 
 # Again, this part is not the best way to code this.  How else can this be done without hardcoding all the graphs?  
@@ -343,18 +619,13 @@ renderPlot({
 
 &nbsp;
 <hr />
-<p style="text-align: center;">A work by <a href="https://github.com/holtzy/">Yan Holtz</a></p>
-<p style="text-align: center;"><span style="color: #808080;"><em>Yan.holtz.data@gmail.com</em></span></p>
+<p style="text-align: center;">By <a href="https://github.com/gladishd/">Dean Gladish</a></p>
+<p style="text-align: center;"><span style="color: #808080;"><em>gladish.dean@gmail.com</em></span></p>
 
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- Add font awesome icons -->
-<p style="text-align: center;">
-    <a href="https://twitter.com/r_graph_gallery?lang=en" class="fa fa-twitter"></a>
-    <a href="https://www.linkedin.com/in/yan-holtz-2477534a/" class="fa fa-linkedin"></a>
-    <a href="https://github.com/holtzy/" class="fa fa-github"></a>
-</p>
+
 
 &nbsp;
 
