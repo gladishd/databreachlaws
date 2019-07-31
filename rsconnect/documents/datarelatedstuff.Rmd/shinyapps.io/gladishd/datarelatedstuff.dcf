@@ -5,8 +5,8 @@ account: gladishd
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 1057340
-bundleId: 2275042
+bundleId: 2280571
 url: https://gladishd.shinyapps.io/datarelatedstuff/
-when: 1564433617.30379
+when: 1564594775.58161
 asMultiple: FALSE
 asStatic: FALSE

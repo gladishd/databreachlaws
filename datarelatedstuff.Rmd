@@ -49,7 +49,7 @@ statesData <- read_csv("statesSimplified.csv")
 
 
 # Remove unneeded columns
-statesData <- subset(statesData, select = c(1:13))
+statesData <- subset(statesData, select = c(1:14))
 
 # Replace all NA values with the integer 0
 statesData[is.na(statesData)] <- 0
@@ -173,7 +173,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var2", 
@@ -185,7 +186,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var3", 
@@ -197,7 +199,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var4", 
@@ -209,7 +212,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var5", 
@@ -221,7 +225,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var6", 
@@ -233,7 +238,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var7", 
@@ -245,7 +251,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var8", 
@@ -257,7 +264,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var9", 
@@ -269,7 +277,8 @@ sidebarLayout(
                   "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
-                  "Information about Financial Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))), 
+                  "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
+                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       sliderInput("range", 
@@ -482,7 +491,8 @@ axis_vars_graphProportions <- c(
   "Government Involvement is Required" = "governmentInvolvementRequired",
   "Service Providers shall be Notified Immediately" = "serviceProvidersNotifyImmediately",
   "Harm Analysis is Required" = "harmAnalysisRequired", 
-  "Financial Account Information is Personal Information" = "financialAccountInformationisPI"
+  "Financial Account Information is Personal Information" = "financialAccountInformationisPI", 
+  "Attorney General must be Notified" = "notifyAGRequired"
 )
 fluidRow(
   shinyjs::useShinyjs(),
@@ -612,6 +622,19 @@ renderPlot({
   scale_x_discrete(limit = c("FALSE", "TRUE"),
                      labels = c("Financial Account Information is Not PI", "Financial Account Information is PI"))
   }
+  
+  else if (input$zvar == "notifyAGRequired") {
+    ggplot(data = statesData, mapping = aes(x = notifyAGRequired, fill = notifyAGRequired)) + 
+  geom_bar() + 
+  labs(title = "Proportion of States", x = "", y = "Number of States") + 
+  theme(panel.background = element_blank()) + 
+  geom_hline(yintercept = seq(0, 50, by = 10), col = "white", lwd = 1) + 
+  theme(axis.text.y = element_blank(), axis.ticks = element_blank()) +
+  geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
+  theme(legend.position = "none") + 
+  scale_x_discrete(limit = c("FALSE", "TRUE"),
+                     labels = c("AG Notification Not Required", "AG Notification Required"))
+  }
 
 })
 
@@ -629,7 +652,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Is a State")
+colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -651,6 +674,8 @@ statesDataPresentable$`Harm Analysis Required` <- ifelse(statesDataPresentable$`
 
 statesDataPresentable$`Financial Account Information is PI` <- ifelse(statesDataPresentable$`Financial Account Information is PI` == "TRUE", "X", "")
 
+statesDataPresentable$`Notify AG Required` <- ifelse(statesDataPresentable$`Notify AG Required` == "TRUE", "X", "")
+
 
 library(knitr)
 library(kableExtra)
@@ -665,6 +690,9 @@ library(gridExtra)
 
 ```
 
+\ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  \\
+
+Furthermore it would be good to clarify some things.  When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that 
 
 
 
@@ -770,6 +798,9 @@ Additional resources to verify these findings:
 * https://www.jdsupra.com/legalnews/arizona-strengthens-data-breach-42989/
 
 
+* https://www.irmi.com/articles/expert-commentary/state-breach-identification-laws-personal-information-definition#9
+
+* https://www.dataprivacymonitor.com/data-breach-notification-laws/last-but-not-least-alabama-enacts-a-data-breach-notification-law-with-strong-notification-and-security-requirements/
 
 
 
