@@ -419,7 +419,7 @@ fluidRow(
   tags$style(css),
   div(id = "expr-container",
   
-  selectInput("yvar", label = "Y-axis variable", choices = axis_vars_graph2, 
+  selectInput("yvar", label = "X-axis variable", choices = axis_vars_graph2, 
               selected = "Cost_of_Revenue", width = "600px")
 )
 )
