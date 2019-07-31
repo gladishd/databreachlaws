@@ -692,7 +692,19 @@ library(gridExtra)
 
 \ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  \\
 
-Furthermore it would be good to clarify some things.  When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that 
+Furthermore it would be good to clarify some things.  When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that a specific number has not been specified (however the Attorney General may still have to be notified).  
+
+If the threshold to notify the Attorney General is 1, this typically indicates that a person must also provide notice of a breach to the Attorney General, whenever (and no later than the time when) notice is provided to residents.  
+
+California's time frame notification requirement (15 business days) only applies to medical-specific data breaches.  
+
+While Connecticut gives 90 days to notify residents, the Connecticut Insurance Department needs to be notified no later than **five calendar days** after the incident is identified.  
+
+When the time frame for notifying residents is listed as 0, this typically means that notification must still be made as expediently as possible.  
+
+Furthermore, the time frame for notifying residents is typically the same as the time frame for notifying the Attorney General.  
+
+
 
 
 
