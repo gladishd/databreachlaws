@@ -692,9 +692,23 @@ library(gridExtra)
 
 \ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  \\
 
-Furthermore it would be good to clarify some things.  When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that a specific number has not been specified (however the Attorney General may still have to be notified).  
+Furthermore it would be good to clarify some things. The Notify AG threshold is describing number of residents. When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that a specific number has not been specified (however the Attorney General may still have to be notified).  
 
-If the threshold to notify the Attorney General is 1, this typically indicates that a person must also provide notice of a breach to the Attorney General, whenever (and no later than the time when) notice is provided to residents.  
+If the threshold to notify the Attorney General is 0, this could indicate that a person must also provide notice of a breach to the Attorney General, whenever (and no later than the time when) notice is provided to residents. Furthermore the laws should be consulted because for instance, in Idaho the entity affected, if a public agency, must notify the Attorney General within 24 hours of discovery.  
+
+However, if the threshold to notify the Attorney General is 1 this indicates that the Attorney General must be notified whenever individuals must be notified, or whenever there is a breach.  Again, the specific laws must be consulted in these cases.  
+
+Other cases where Notify AG is 1 refer to cases like New Jersey where it's not the AG but rather the Division of State Police in the Law Department of Law and Public Safety must be notified regarding a breach prior to notifying customers.  
+
+Similarly, Notify AG is 1 for Puerto Rico, a "state" for which the Department of Consumer Affairs must be notified regarding a breach as expeditiously as possible.  
+
+In general it would be helpful to make sure the AG must not be contacted when the value of Notify AG is 1 or 0.  
+
+The 1000 guideline for notifying Consumer Reporting Agencies for South Carolina specifically refers to the Consumer Protection Division of the Department of Consumer Affairs.  
+
+The method of delivery for notifying the AG may vary as well, including mail, electronic mail and form delivery.  
+
+
 
 California's time frame notification requirement (15 business days) only applies to medical-specific data breaches.  
 
@@ -706,8 +720,7 @@ Furthermore, the time frame for notifying residents is typically the same as the
 
 If notification was previously delayed based on the determination of law enforcement that notification will impede a criminal investigation or jeopardize homeland or national security, then Maryland's notification time frame is 30 (instead of 45) days starting from the re-evaluation of this determination.  Similarly, in the same case South Dakota's time frame is 30 (instead of 60) days.  
 
-
-
+The "Government Involvement Required" variable simply describes whether the government needs to get involved; specifically, whether the state does not permit a private cause of action in any circumstance.  This definition of whether or not the government must be involved is very strong.  
 
 
 
