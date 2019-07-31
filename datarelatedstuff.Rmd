@@ -704,6 +704,10 @@ When the time frame for notifying residents is listed as 0, this typically means
 
 Furthermore, the time frame for notifying residents is typically the same as the time frame for notifying the Attorney General.  
 
+If notification was previously delayed based on the determination of law enforcement that notification will impede a criminal investigation or jeopardize homeland or national security, then Maryland's notification time frame is 30 (instead of 45) days starting from the re-evaluation of this determination.  Similarly, in the same case South Dakota's time frame is 30 (instead of 60) days.  
+
+
+
 
 
 
