@@ -33,16 +33,16 @@ library(knitr)
 
 During the last decade, the topic of data privacy and security has been increasing in importance as more companies (which are disproportionately hospitals and universities) are breached. Even by January of 2010 over 354 million pieces of personally identifying information (PII) had been compromised and 46 states had enacted legislation requiring companies to protect consumers by notifying them about personal information (PI) breaches. 
 
-\ \ \ \ \ \ \ In February of 2005, consumer data broker ChoicePoint (the Company) ended up paying a $10 million fine in restitution to identity theft victims. What happened was that over 145,000 consumers' information (including names, addresses, social security numbers, driver's license numbers, credit reports and other financial information) had been sold by ChoicePoint to scammers posing as legitimate businesses who gained access to this information.  And because of disparate laws among states in which only some state laws required notification, the Company initially disclosed the breach only to California residents.  
+\ \ \ \ \ \ \ In February of 2005, consumer data broker ChoicePoint (the Company) ended up paying a $10 million fine in restitution to identity theft victims. What happened was that over 145,000 consumers' information (including names, addresses, social security numbers, driver's license numbers, credit reports and other financial information) was sold by ChoicePoint to scammers posing as legitimate businesses who then gained access to this information. And because of disparate laws among states in which only some state laws required notification, the Company chose to initially disclose the breach only to California residents.  
 
 
-\ \ \ \ \ \ \ Recently, states have enacted legislation requiring notification to consumers, consumer reporting agencies (CRAs) and/or state regulators. Some of these laws allow for a private cause of action (which may require proving actual damages caused by the data breach or by a notification failure), and some have created additional laws; in particular, Minnesota enacted the "Plastic Card Security Act," which transfers the cost of card-related breaches from financial institutions to retail institutions. Additionally, because there have been more state laws proposed (and federal laws proposed which do not provide private right of action), it's important to have a general understanding.  
+\ \ \ \ \ \ \ Recently, more states have enacted legislation requiring notification to consumers, consumer reporting agencies (CRAs) and/or state regulators. Some of these laws allow for a private cause of action (which may require proving actual damages caused by a data breach or notification failure), and some have created additional laws; in particular, Minnesota enacted the "Plastic Card Security Act," which transfers the cost of card-related breaches from financial institutions to retail institutions. Additionally, since there have been more state and federal laws proposed, it's important to have a general understanding.  
 
-\ \ \ \ \ \ \ This document is just an overview of requirements, for different states, that some entities (like service providers) need to fulfill to comply with state law after a data incident or data breach.  I wanted to create a document which also gives helpful graphs and which can be updated.  This is important because while current state laws generally do not conflict among each other, they have vast differences which can make obligations to consumers unclear and ambiguous; with this in mind we are obligated to provide effective support to affected individuals within the current situation. 
+\ \ \ \ \ \ \ This document is just an overview of requirements, for different states, that some entities (like service providers) need to fulfill to comply with state laws after a data incident or data breach. I wanted to create a document which also gives helpful graphs and which can be updated. This is important because although current state laws generally do not conflict with each other they have vast differences which can make obligations to consumers unclear and ambiguous. With this in mind we are obligated to provide effective support to affected individuals within the current situation. 
 
 
 
-\ \ \ \ \ \ \ That's the intention of this document.    
+\ \ \ \ \ \ \ That's the purpose of this document.    
 
 ```{r Load and wrangle data, message = FALSE, warning = FALSE, echo = FALSE}
 
@@ -696,7 +696,7 @@ library(gridExtra)
 
 
 ***
-## __*Discussion*__
+## _Discussion_
 ***
 
 After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  
