@@ -787,7 +787,7 @@ __Some more information on states which modified their laws in 2019 and 2018__
 
 __Additional Resources__
 
-Additional resources to verify these findings:  
+Additional resources about data breach laws:  
 
 
 * https://www.dataprotectionreport.com/2019/06/nine-states-pass-new-and-expanded-data-breach-notification-laws/

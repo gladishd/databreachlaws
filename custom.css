@@ -36,3 +36,8 @@ a:hover{
 a:visited{
     color:#3d1308
 }
+
+/* Whole document: */
+body{
+  font-family: Georgia;
+}
