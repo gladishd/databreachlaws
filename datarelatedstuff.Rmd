@@ -131,7 +131,7 @@ font-size: 12px;
 axis_vars <- c(
   "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019", 
   "With DOB as PI" = "hasDOBasPI", 
-  "With Online (vs. financial) account as PI" = "hasOnlineAccountsasPI", 
+  "With Online (not financial) account information as PI" = "hasOnlineAccountsasPI", 
   "\"access\" vs. acquisition" = "requiresAcquisitionNotJustAccess", 
   "Harm analysis allowed or not" = "harmAnalysisAllowed", 
   "Government Involvement or not" = "governmentInvolvementRequired", 
@@ -167,130 +167,130 @@ sidebarLayout(
       selectInput("var", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var2", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var3", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var4", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))),  
                   selected = "all states"),
       
       selectInput("var5", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var6", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var7", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))),  
                   selected = "all states"),
       
       selectInput("var8", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       selectInput("var9", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth is PI" = toString(which(statesData$hasDOBasPI)), "Online Accounts are PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition instead of just access counts as a data breach" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
-                  "Harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
-                  "Government Involvement is Required" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify consumers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General Notification is Required in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
                   selected = "all states"),
       
       sliderInput("range", 
-                  label = "Range of Attorney General Notification Thresholds:",
+                  label = "Threshold to Notify the AG",
                   min = min(statesData$thresholdNotifyAG), max = max(statesData$thresholdNotifyAG), value = c(min(statesData$thresholdNotifyAG), max(statesData$thresholdNotifyAG)), step = NULL)
     ,
     sliderInput("range2", 
-                  label = "Range of Consumer Reporting Agency Notification Thresholds:",
+                  label = "Threshold to Notify some Consumer Reporting Agencies",
                   min = min(statesData$thresholdNotifyCRA), max = max(statesData$thresholdNotifyCRA), value = c(min(statesData$thresholdNotifyCRA), max(statesData$thresholdNotifyCRA)), step = NULL)
     ,
 sliderInput("range3", 
-                  label = "Time Frame for making notifications:",
+                  label = "Time Frame for notifying affected individuals:",
                   min = min(statesData$timeFrame), max = max(statesData$timeFrame), value = c(min(statesData$timeFrame), max(statesData$timeFrame)), step = NULL)
     ),
     
@@ -411,8 +411,8 @@ renderUI({
 
 axis_vars_graph2 <- c(
   "Reporting threshold: number of individuals to notify Attorney General" = "thresholdNotifyAG",
-  "Reporting threshold: number of individuals to notify consumer reporting agency" = "thresholdNotifyCRA", 
-  "Time Frame within which to notify" = "timeFrame"
+  "Reporting threshold: number of individuals to notify consumer reporting agencies" = "thresholdNotifyCRA", 
+  "Time Frame within which to notify affected individuals" = "timeFrame"
 )
 fluidRow(
   shinyjs::useShinyjs(),
@@ -456,7 +456,7 @@ renderPlot({
   xlab("State") + 
   theme(panel.background = element_blank()) + 
   theme(axis.ticks = element_blank()) + 
-  labs(title = "States and Threshold", y = "How Long to Disclose") + 
+  labs(title = "States and Threshold", y = "How Long to Disclose to Affected Individuals") + 
   geom_hline(yintercept = seq(0, 100, by = 10), colour = "gray", size = 1, linetype = 21) + 
   coord_flip() + 
   theme(axis.text.y = element_text(size = 7))
@@ -484,14 +484,14 @@ renderPlot({
 
 axis_vars_graphProportions <- c(
   "Modified Laws in 2018 or 2019" = "modifiedLawsin2018or2019", 
-  "Date of Birth is Considered to be Personal Information" = "hasDOBasPI",
-  "Online Accounts are Personal Information" = "hasOnlineAccountsasPI",
-  "Definition of Data Breach Requires Acquisition (not just access)" = "requiresAcquisitionNotJustAccess", 
-  "Harm Analysis is Allowed" = "harmAnalysisAllowed", 
-  "Government Involvement is Required" = "governmentInvolvementRequired",
-  "Service Providers shall be Notified Immediately" = "serviceProvidersNotifyImmediately",
-  "Harm Analysis is Required" = "harmAnalysisRequired", 
-  "Financial Account Information is Personal Information" = "financialAccountInformationisPI", 
+  "Date of Birth only is Considered to be Personal Information" = "hasDOBasPI",
+  "Information about Online Accounts is Personal Information" = "hasOnlineAccountsasPI",
+  "Definition of Data Breach requires Acquisition (instead of just access)" = "requiresAcquisitionNotJustAccess", 
+  "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
+  "Government Involvement is Required (no private cause of action)" = "governmentInvolvementRequired",
+  "Service Providers shall Notify customers immediately" = "serviceProvidersNotifyImmediately",
+  "Risk-of-harm Analysis is Required" = "harmAnalysisRequired", 
+  "Information related to Financial Accounts is Personal Information" = "financialAccountInformationisPI", 
   "Attorney General must be Notified" = "notifyAGRequired"
 )
 fluidRow(
@@ -652,7 +652,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
+colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -721,6 +721,18 @@ Furthermore, the time frame for notifying residents is typically the same as the
 If notification was previously delayed based on the determination of law enforcement that notification will impede a criminal investigation or jeopardize homeland or national security, then Maryland's notification time frame is 30 (instead of 45) days starting from the re-evaluation of this determination.  Similarly, in the same case South Dakota's time frame is 30 (instead of 60) days.  
 
 The "Government Involvement Required" variable simply describes whether the government needs to get involved; specifically, whether the state does not permit a private cause of action in any circumstance.  This definition of whether or not the government must be involved is very strong.  
+The "Financial Account Information is PI" variable doesn't refer to the financial information itself (which should always be personal information) but rather refers to information about financial accounts, information which could be used to access them.  
+
+Financial Services account number, for instance, is considered to be personal information when it applies to students in New Hampshire.  
+
+California, while its general breach notification statute refers to acquisition, refers to access specifically for medical information.  
+
+With respect to what constitutes a breach of security, I elected to state that California considers access to be sufficient in some cases, namely in medical cases.  
+
+The definition of notifying third-parties/service providers providing the information immediately was taken to be very strict - that is, phrases like "as soon as practicable", "as soon as possible" and "in the most expedient time possible" and "within 24 hours following discovery" were not taken to be the same as "immediately."  
+
+Information about access to Online Accounts was considered alone.  
+
 
 
 
