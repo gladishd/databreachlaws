@@ -533,7 +533,7 @@ renderPlot({
   geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
   theme(legend.position = "none") + 
   scale_x_discrete(limit = c("FALSE", "TRUE"),
-                     labels = c("Date of Birth is not PI", "Date of Birth is PI"))
+                     labels = c("Date of Birth alone is not PI", "Date of Birth alone is PI"))
   }
   
   else if (input$zvar == "hasOnlineAccountsasPI") {
@@ -585,7 +585,7 @@ renderPlot({
   geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
   theme(legend.position = "none") + 
   scale_x_discrete(limit = c("FALSE", "TRUE"),
-                     labels = c("Government Involvement is Required", "Government Involvement is Not Required"))
+                     labels = c("Government Involvement is Not Required", "Government Involvement is Required"))
   }
   
   else if (input$zvar == "serviceProvidersNotifyImmediately") {
@@ -624,7 +624,7 @@ renderPlot({
   geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
   theme(legend.position = "none") + 
   scale_x_discrete(limit = c("FALSE", "TRUE"),
-                     labels = c("Financial Account Information is Not PI", "Financial Account Information is PI"))
+                     labels = c("Information leading to Financial Accounts is Not PI", "Information leading to Financial Accounts is PI"))
   }
   
   else if (input$zvar == "notifyAGRequired") {
@@ -853,7 +853,17 @@ Additional resources about data breach laws:
 
 * https://www.dataprivacymonitor.com/data-breach-notification-laws/last-but-not-least-alabama-enacts-a-data-breach-notification-law-with-strong-notification-and-security-requirements/
 
+* https://www.dwt.com/files/Uploads/Documents/Publications/VirginIslands%20Security%20Breach.pdf 
 
+* https://www.nuemd.com/hipaa/breach-guide/GU.html
+
+* https://www.symtec.com/utah-personal-information-protection-and-data-breach-laws/
+
+* https://www.dataprivacymonitor.com/data-breach-notification-laws/colorado-enacts-sweeping-changes-to-data-breach-reporting-requirements-and-adds-new-data-security-requirements/
+
+* https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart-georgia.html
+
+* http://www.mainelegislature.org/legis/bills/bills_129th/billtexts/SP027501.asp
 
 
 &nbsp;
