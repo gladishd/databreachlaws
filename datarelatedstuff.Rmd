@@ -31,10 +31,14 @@ library(knitr)
 
 ***
 
+During the last decade, the topic of data privacy and security has been increasing in importance as more companies (which are disproportionately hospitals and universities) are breached. Even by January of 2010 over 354 million pieces of personally identifying information (PII) had been compromised and 46 states had enacted legislation requiring companies to protect consumers by notifying them about personal information (PI) breaches. 
 
-This document is just an overview of the requirements, for different states, that service providers and other entities need to fulfill in order to comply with the state law in the event of a data incident/breach. I wanted to create a document which would also give some helpful graphs and which can be updated as needed.  
+\ \ \ \ \ \ \ In February of 2005, consumer data broker ChoicePoint (the Company) ended up paying a $10 million fine in restitution to identity theft victims. What happened was that over 145,000 consumers' information (including names, addresses, social security numbers, driver's license numbers, credit reports and other financial information) had been sold by ChoicePoint to scammers posing as legitimate businesses who gained access to this information.  And because of disparate laws among states in which only some state laws required notification, the Company initially disclosed the breach only to California residents.  
 
 
+\ \ \ \ \ \ \ Recently, states have enacted legislation requiring notification to consumers, consumer reporting agencies (CRAs) and/or state regulators. Some of these laws allow for a private cause of action (which may require proving actual damages caused by the data breach or by a notification failure), and some have created additional laws; in particular, Minnesota enacted the "Plastic Card Security Act," which transfers the cost of card-related breaches from financial institutions to retail institutions. Additionally, because there have been more state laws proposed (and federal laws proposed which do not provide private right of action), it's important to have a general understanding.  
+
+\ \ \ \ \ \ \ This document is just an overview of requirements, for different states, that some entities (like service providers) need to fulfill to comply with state law after a data incident or data breach.  I wanted to create a document which also gives helpful graphs and which can be updated.  This is important because while current state laws generally do not conflict among each other, they have vast differences which can make obligations to consumers unclear and ambiguous; with this in mind we are obligated to provide effective support to affected individuals within the current situation. 
 
 
 
@@ -69,7 +73,7 @@ statesData$placeHolderColumn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE
 ***
 
 
-## _Filtering States_
+## _State Filter_
 
 
 ***
@@ -398,7 +402,7 @@ renderUI({
 
 ***
 
-## _Reporting Thresholds and Time Frame_
+## _Reporting Thresholds and Time-frames for all States_
 
 ***
 
@@ -470,7 +474,7 @@ renderPlot({
 
 ***
 
-## _Proportions of States Which Have Enacted Regulations_
+## _Proportions of States which have Enacted Regulations_
 
 ***
 
@@ -692,7 +696,7 @@ library(gridExtra)
 
 
 ***
-## __*Discussion of Table*__
+## __*Discussion*__
 ***
 
 After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  
@@ -789,7 +793,11 @@ __Additional Resources__
 
 Additional resources about data breach laws:  
 
+* https://openscholarship.wustl.edu/cgi/viewcontent.cgi?article=1087&context=law_journal_law_policy
+    + Jill Joerling argues for a comprehensive federal law to protect consumer data
 
+* http://www.nbcnews.com/id/11030692/ns/technology_and_science-security/t/choicepoint-pay-million-over-data-breach/#.XUMtBOhKhPY
+    + Some more information about the ChoicePoint data breach of 2005
 * https://www.dataprotectionreport.com/2019/06/nine-states-pass-new-and-expanded-data-breach-notification-laws/
     + (same findings as the previous link which is https://www.jdsupra.com/legalnews/year-to-date-changes-to-state-data-21648/).
     + http://www.ncsl.org/research/telecommunications-and-information-technology/2018-security-breach-legislation.aspx (relevant).  
