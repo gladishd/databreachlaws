@@ -690,13 +690,24 @@ library(gridExtra)
 
 ```
 
-\ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  
 
+***
+## __*Discussion of Table*__
+***
+
+After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  
+
+
+<div style="margin-left: 1em;">
 Also, to discuss the table above: The Notify AG threshold is describing number of residents; when it's 0 this does not mean that notification is not needed but it just means that a specific number has not been specified.  It might indicate that the Attorney General must be notified whenever (and no later than when) notice is provided to the residents of that state.  For instance, in Idaho the affected entity, if a public agency, must notify the Attorney General within 24 hours of discovery of a data breach.  
 
-\ \ \ \ \ \ \ If the Notify AG threshold is 1 this indicates that the Attorney General must be notified whenever individuals must be notified, or alternatively whenever there is a breach.  The specific laws must be looked at in these cases.  For example, in New Jersey the Division of State Police in the Department of Law and Public Safety must be notified regarding a breach prior to notifying customers.  In Puerto Rico, the Department of Consumer Affairs must be notified regarding a breach as expeditiously as possible.  
+If the Notify AG threshold is 1 this indicates that the Attorney General must be notified whenever individuals must be notified, or alternatively whenever there is a breach.  The specific laws must be looked at in these cases.  For example, in New Jersey the Division of State Police in the Department of Law and Public Safety must be notified regarding a breach prior to notifying customers.  In Puerto Rico, the Department of Consumer Affairs must be notified regarding a breach as expeditiously as possible.  
+</div>
 
-\ \ \ \ \ \ \ In general, this table is a helpful guide but does not provide specific information.  To clarify some of this:  
+
+
+
+In general, this table is a helpful guide but does not provide specific information.  To clarify some of this:  
 
 California's time frame (15 business days) only applies to medical-specific data breaches.  
 
@@ -706,20 +717,25 @@ Furthermore, when the time frame is 0 this typically means that notification mus
 
 There are other exceptions, and this list does not include everything:  
 
-\ \ \ \ \ \ \ In Maryland, if notification had been delayed based on determination of law enforcement that such notification would impede a criminal investigation or jeopardize homeland or national security, then the time frame becomes 30 days starting from this re-evaluated decision instead of 45 days starting from discovery of a data breach.  Similarly, in the same kind of situation South Dakota's time frame is 30 (not 60) days.  
+In Maryland, if notification had been delayed based on determination of law enforcement that such notification would impede a criminal investigation or jeopardize homeland or national security, then the time frame becomes 30 days starting from this re-evaluated decision instead of 45 days starting from discovery of a data breach.  Similarly, in the same kind of situation South Dakota's time frame is 30 (not 60) days.  
 
-\ \ \ \ \ \ \ 
-
-\ \ \ \ \ \ \ 
-
-
-The "Government Involvement Required" variable means that the state does not permit a private cause of action in any circumstance, so this definition seems very strong.  
+<div style="margin-left: 1em;">
+The "Government Involvement Required" variable means that the state does not permit a private cause of action in any circumstance, so this definition seems very strong. 
+</div>
+ 
 
 Since financial information itself should always be Personal Information, the financial account variable refers not to the information itself but to information which could be used to access financial accounts.  In New Hampshire for instance, Financial Services account number is considered to be personal information.  
 
+<div style="margin-left: 1em;">
 About what makes a breach of security, the table has California considering access to be sufficient.  While its general breach notification statute refers to acquisition, the state of California regards access as sufficient when it involves medical information.  
 
+</div>
+
+
 Furthermore: the definition regarding service providers (and other third parties which house information for customers) is very strict.  That is, phrases like "as soon as practicable", "as soon as possible", "in the most expedient time possible" and "within 24 hours following discovery" are not the same as "immediately."  
+
+
+
 
 
 
@@ -727,7 +743,7 @@ Furthermore: the definition regarding service providers (and other third parties
 ## _References_
 ***
 
-\ \ \ \ \ \ \ This section is just a references section.  I used a variety of sources (various law firms, etc.) and the main gist of this sheet is to demonstrate facts about the laws themselves which can be verified independently as well.  The following is a list of the actual acts which I have looked at: 
+This section is just a references section.  I used a variety of sources (various law firms, etc.) and the main gist of this sheet is to demonstrate facts about the laws themselves which can be verified independently as well.  The following is a list of the actual acts which I have looked at: 
 
 * https://privacy.huntonwilliamsblogs.com/wp-content/uploads/sites/18/2018/04/Alabama-Data-Breach-Notification-Act-of-2018.pdf (Act for Alabama)
 * https://www.azleg.gov/legtext/53leg/2r/bills/hb2154p.pdf (Arizona)
