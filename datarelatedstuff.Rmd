@@ -1,7 +1,7 @@
 ---
 title: "Data Breach Notification Laws"
 author: "Dean Gladish"
-date: "July 31, 2019"
+date: "Last Updated August 1, 2019"
 output:
   rmdformats::readthedown:
     self_contained: true
@@ -652,7 +652,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
+colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -690,50 +690,36 @@ library(gridExtra)
 
 ```
 
-\ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  \\
+\ \ \ \ \ \ \ After introducing this table I want to introduce some sources which were the most effective to me. These are Perkins Coie (https://www.perkinscoie.com/en/news-insights/security-breach-notification-chart.html), Baker Law (https://www.bakerlaw.com/files/Uploads/Documents/Data%20Breach%20documents/Data_Breach_Charts.pdf, https://www.bakerlaw.com/BreachNotificationLawMap) and Davis Wright Tremaine (https://www.dwt.com/gcp/state-data-breach-statutes).  
 
-Furthermore it would be good to clarify some things. The Notify AG threshold is describing number of residents. When the threshold of consumers affected is 0 for notifying the Attorney General, this indicates that a specific number has not been specified (however the Attorney General may still have to be notified).  
+Also, to discuss the table above: The Notify AG threshold is describing number of residents; when it's 0 this does not mean that notification is not needed but it just means that a specific number has not been specified.  It might indicate that the Attorney General must be notified whenever (and no later than when) notice is provided to the residents of that state.  For instance, in Idaho the affected entity, if a public agency, must notify the Attorney General within 24 hours of discovery of a data breach.  
 
-If the threshold to notify the Attorney General is 0, this could indicate that a person must also provide notice of a breach to the Attorney General, whenever (and no later than the time when) notice is provided to residents. Furthermore the laws should be consulted because for instance, in Idaho the entity affected, if a public agency, must notify the Attorney General within 24 hours of discovery.  
+\ \ \ \ \ \ \ If the Notify AG threshold is 1 this indicates that the Attorney General must be notified whenever individuals must be notified, or alternatively whenever there is a breach.  The specific laws must be looked at in these cases.  For example, in New Jersey the Division of State Police in the Department of Law and Public Safety must be notified regarding a breach prior to notifying customers.  In Puerto Rico, the Department of Consumer Affairs must be notified regarding a breach as expeditiously as possible.  
 
-However, if the threshold to notify the Attorney General is 1 this indicates that the Attorney General must be notified whenever individuals must be notified, or whenever there is a breach.  Again, the specific laws must be consulted in these cases.  
+\ \ \ \ \ \ \ In general, this table is a helpful guide but does not provide specific information.  To clarify some of this:  
 
-Other cases where Notify AG is 1 refer to cases like New Jersey where it's not the AG but rather the Division of State Police in the Law Department of Law and Public Safety must be notified regarding a breach prior to notifying customers.  
+California's time frame (15 business days) only applies to medical-specific data breaches.  
 
-Similarly, Notify AG is 1 for Puerto Rico, a "state" for which the Department of Consumer Affairs must be notified regarding a breach as expeditiously as possible.  
+While Connecticut's time frame for notifying residents is 90 days, notification must be given to the Connecticut Insurance Department no later than **five calendar days** after the identification of the incident.  
 
-In general it would be helpful to make sure the AG must not be contacted when the value of Notify AG is 1 or 0.  
+Furthermore, when the time frame is 0 this typically means that notification must still be made as expediently as possible.  And as a side note, residents generally must be notified within the same time as the Attorney General must be notified.  
 
-The 1000 guideline for notifying Consumer Reporting Agencies for South Carolina specifically refers to the Consumer Protection Division of the Department of Consumer Affairs.  
+There are other exceptions, and this list does not include everything:  
 
-The method of delivery for notifying the AG may vary as well, including mail, electronic mail and form delivery.  
+\ \ \ \ \ \ \ In Maryland, if notification had been delayed based on determination of law enforcement that such notification would impede a criminal investigation or jeopardize homeland or national security, then the time frame becomes 30 days starting from this re-evaluated decision instead of 45 days starting from discovery of a data breach.  Similarly, in the same kind of situation South Dakota's time frame is 30 (not 60) days.  
 
+\ \ \ \ \ \ \ 
 
-
-California's time frame notification requirement (15 business days) only applies to medical-specific data breaches.  
-
-While Connecticut gives 90 days to notify residents, the Connecticut Insurance Department needs to be notified no later than **five calendar days** after the incident is identified.  
-
-When the time frame for notifying residents is listed as 0, this typically means that notification must still be made as expediently as possible.  
-
-Furthermore, the time frame for notifying residents is typically the same as the time frame for notifying the Attorney General.  
-
-If notification was previously delayed based on the determination of law enforcement that notification will impede a criminal investigation or jeopardize homeland or national security, then Maryland's notification time frame is 30 (instead of 45) days starting from the re-evaluation of this determination.  Similarly, in the same case South Dakota's time frame is 30 (instead of 60) days.  
-
-The "Government Involvement Required" variable simply describes whether the government needs to get involved; specifically, whether the state does not permit a private cause of action in any circumstance.  This definition of whether or not the government must be involved is very strong.  
-The "Financial Account Information is PI" variable doesn't refer to the financial information itself (which should always be personal information) but rather refers to information about financial accounts, information which could be used to access them.  
-
-Financial Services account number, for instance, is considered to be personal information when it applies to students in New Hampshire.  
-
-California, while its general breach notification statute refers to acquisition, refers to access specifically for medical information.  
-
-With respect to what constitutes a breach of security, I elected to state that California considers access to be sufficient in some cases, namely in medical cases.  
-
-The definition of notifying third-parties/service providers providing the information immediately was taken to be very strict - that is, phrases like "as soon as practicable", "as soon as possible" and "in the most expedient time possible" and "within 24 hours following discovery" were not taken to be the same as "immediately."  
-
-Information about access to Online Accounts was considered alone.  
+\ \ \ \ \ \ \ 
 
 
+The "Government Involvement Required" variable means that the state does not permit a private cause of action in any circumstance, so this definition seems very strong.  
+
+Since financial information itself should always be Personal Information, the financial account variable refers not to the information itself but to information which could be used to access financial accounts.  In New Hampshire for instance, Financial Services account number is considered to be personal information.  
+
+About what makes a breach of security, the table has California considering access to be sufficient.  While its general breach notification statute refers to acquisition, the state of California regards access as sufficient when it involves medical information.  
+
+Furthermore: the definition regarding service providers (and other third parties which house information for customers) is very strict.  That is, phrases like "as soon as practicable", "as soon as possible", "in the most expedient time possible" and "within 24 hours following discovery" are not the same as "immediately."  
 
 
 
