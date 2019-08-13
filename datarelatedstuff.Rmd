@@ -491,9 +491,9 @@ axis_vars_graphProportions <- c(
   "Date of Birth only is Considered to be Personal Information" = "hasDOBasPI",
   "Information about Online Accounts is Personal Information" = "hasOnlineAccountsasPI",
   "Definition of Data Breach is access (instead of requiring acquisition)" = "onlyRequiresAccess", 
-  "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
   "No Private Cause of Action" = "governmentInvolvementRequired",
   "Service Providers shall Notify customers immediately" = "serviceProvidersNotifyImmediately",
+  "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
   "Risk-of-harm Analysis is Required" = "harmAnalysisRequired", 
   "Information related to Financial Accounts is Personal Information" = "financialAccountInformationisPI", 
   "Attorney General must be Notified" = "notifyAGRequired"
@@ -656,7 +656,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Access", "Harm Analysis Allowed", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
+colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -668,11 +668,13 @@ statesDataPresentable$`Online Accounts are PI` <- ifelse(statesDataPresentable$`
 
 statesDataPresentable$`Access` <- ifelse(statesDataPresentable$`Access` == "TRUE", "X", "")
 
-statesDataPresentable$`Harm Analysis Allowed` <- ifelse(statesDataPresentable$`Harm Analysis Allowed` == "TRUE", "X", "")
+
 
 statesDataPresentable$`No Private Cause of Action` <- ifelse(statesDataPresentable$`No Private Cause of Action` == "TRUE", "X", "")
 
 statesDataPresentable$`Notify SP Immediately` <- ifelse(statesDataPresentable$`Notify SP Immediately` == "TRUE", "X", "")
+
+statesDataPresentable$`Harm Analysis Allowed` <- ifelse(statesDataPresentable$`Harm Analysis Allowed` == "TRUE", "X", "")
 
 statesDataPresentable$`Harm Analysis Required` <- ifelse(statesDataPresentable$`Harm Analysis Required` == "TRUE", "X", "")
 
