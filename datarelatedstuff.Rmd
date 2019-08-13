@@ -136,7 +136,7 @@ axis_vars <- c(
   "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019", 
   "With DOB as PI" = "hasDOBasPI", 
   "With Online (not financial) account information as PI" = "hasOnlineAccountsasPI", 
-  "\"access\" vs. acquisition" = "requiresAcquisitionNotJustAccess", 
+  "\"access\" instead of acquisition" = "onlyRequiresAccess", 
   "Harm analysis allowed or not" = "harmAnalysisAllowed", 
   "Government Involvement or not" = "governmentInvolvementRequired", 
   "Reporting threshold: number of individuals to notify Attorney General" = "thresholdNotifyAG",
@@ -172,7 +172,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -185,7 +185,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -198,7 +198,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -211,7 +211,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -224,7 +224,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -237,7 +237,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -250,7 +250,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -263,7 +263,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -276,7 +276,7 @@ sidebarLayout(
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
                     "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
-                  "Acquisition (instead of only access) is a breach of security" = toString(which(statesData$requiresAcquisitionNotJustAccess)), 
+                  "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "Government Involvement is Required (that is, a private cause of action is not permitted)" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
@@ -490,7 +490,7 @@ axis_vars_graphProportions <- c(
   "Modified Laws in 2018 or 2019" = "modifiedLawsin2018or2019", 
   "Date of Birth only is Considered to be Personal Information" = "hasDOBasPI",
   "Information about Online Accounts is Personal Information" = "hasOnlineAccountsasPI",
-  "Definition of Data Breach requires Acquisition (instead of just access)" = "requiresAcquisitionNotJustAccess", 
+  "Definition of Data Breach is access (instead of requiring acquisition)" = "onlyRequiresAccess", 
   "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
   "Government Involvement is Required (no private cause of action)" = "governmentInvolvementRequired",
   "Service Providers shall Notify customers immediately" = "serviceProvidersNotifyImmediately",
@@ -549,8 +549,8 @@ renderPlot({
                      labels = c("Online Accounts are not PI", "Online Accounts are PI"))
   }
   
-  else if (input$zvar == "requiresAcquisitionNotJustAccess") {
-    ggplot(data = statesData, mapping = aes(x = requiresAcquisitionNotJustAccess, fill = requiresAcquisitionNotJustAccess)) + 
+  else if (input$zvar == "onlyRequiresAccess") {
+    ggplot(data = statesData, mapping = aes(x = onlyRequiresAccess, fill = onlyRequiresAccess)) + 
   geom_bar() + 
   labs(title = "Proportion of States", x = "", y = "Number of States") + 
   theme(panel.background = element_blank()) + 
@@ -559,7 +559,7 @@ renderPlot({
   geom_text(aes(label=..count..), stat="count", position = position_stack(), vjust = 1.5, color = "white") + 
   theme(legend.position = "none") + 
   scale_x_discrete(limit = c("FALSE", "TRUE"),
-                     labels = c("Access", "Acquisition"))
+                     labels = c("Acquisition", "Access"))
   }
   
   else if (input$zvar == "harmAnalysisAllowed") {
@@ -656,7 +656,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Acquisition", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
+colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Access", "Harm Analysis Allowed", "Government Involvement Required", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -666,7 +666,7 @@ statesDataPresentable$`DOB is PI` <- ifelse(statesDataPresentable$`DOB is PI` ==
 
 statesDataPresentable$`Online Accounts are PI` <- ifelse(statesDataPresentable$`Online Accounts are PI` == "TRUE", "X", "")
 
-statesDataPresentable$Acquisition <- ifelse(statesDataPresentable$Acquisition == "TRUE", "X", "")
+statesDataPresentable$`Access` <- ifelse(statesDataPresentable$`Access` == "TRUE", "X", "")
 
 statesDataPresentable$`Harm Analysis Allowed` <- ifelse(statesDataPresentable$`Harm Analysis Allowed` == "TRUE", "X", "")
 
