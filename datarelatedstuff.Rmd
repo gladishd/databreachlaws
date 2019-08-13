@@ -133,7 +133,6 @@ font-size: 12px;
 
 
 axis_vars <- c(
-  "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019", 
   "With DOB as PI" = "hasDOBasPI", 
   "With Online (not financial) account information as PI" = "hasOnlineAccountsasPI", 
   "\"access\" instead of acquisition" = "onlyRequiresAccess", 
@@ -144,7 +143,8 @@ axis_vars <- c(
   "Time Frame within which to notify" = "timeFrame", 
   "Requirement for \"service provider\" to report to data owner immediately or not" = "serviceProvidersNotifyImmediately", 
   "Harm analysis required or not" = "harmAnalysisRequired", 
-  "With Financial (vs. online) account as PI" = "financialAccountInformationisPI"
+  "With Financial (vs. online) account as PI" = "financialAccountInformationisPI", 
+  "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019"
 )
 
 
@@ -171,118 +171,127 @@ sidebarLayout(
       selectInput("var", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var2", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var3", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var4", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))),  
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var5", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var6", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var7", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))),  
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var8", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       selectInput("var9", 
                   label = "",
                   choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
                   "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
-                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired))), 
+                  "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
+                  "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
                   selected = "all states"),
       
       sliderInput("range", 
@@ -487,7 +496,6 @@ renderPlot({
 
 
 axis_vars_graphProportions <- c(
-  "Modified Laws in 2018 or 2019" = "modifiedLawsin2018or2019", 
   "Date of Birth only is Considered to be Personal Information" = "hasDOBasPI",
   "Information about Online Accounts is Personal Information" = "hasOnlineAccountsasPI",
   "Definition of Data Breach is access (instead of requiring acquisition)" = "onlyRequiresAccess", 
@@ -496,7 +504,8 @@ axis_vars_graphProportions <- c(
   "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
   "Risk-of-harm Analysis is Required" = "harmAnalysisRequired", 
   "Information related to Financial Accounts is Personal Information" = "financialAccountInformationisPI", 
-  "Attorney General must be Notified" = "notifyAGRequired"
+  "Attorney General must be Notified" = "notifyAGRequired", 
+  "Modified Laws in 2018 or 2019" = "modifiedLawsin2018or2019"
 )
 fluidRow(
   shinyjs::useShinyjs(),
@@ -656,7 +665,7 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
-colnames(statesDataPresentable) <- c("State", "Modified 2018-2019", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Is a State")
+colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
