@@ -76,7 +76,6 @@ statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNoti
 statesData$serviceProvidersNotifyCustomers <- ifelse((str_detect(statesData$serviceProvidersNotifyCustomers, "immediately") == TRUE | str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE), TRUE, FALSE)
 
 statesData[is.na(statesData)] <- 0
-#statesData$thresholdNotifyAG <- as.numeric(statesData$thresholdNotifyAG)
 ```
 
 ***
