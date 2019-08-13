@@ -56,7 +56,7 @@ statesData <- read_csv("statesSimplified.csv")
 statesData <- subset(statesData, select = c(1:14))
 
 # Replace all NA values with the integer 0
-statesData[is.na(statesData)] <- 0
+
 
 
 library(ggplot2)
@@ -66,8 +66,17 @@ library(ggplot2)
 statesData$placeHolderColumn <- c(TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE)
 
 
+statesDataSave <- statesData
 
 
+
+## This part makes the data easy for graphing.  
+statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNotifyAG)) == TRUE, NA, statesData$thresholdNotifyAG)
+
+statesData$serviceProvidersNotifyCustomers <- ifelse((str_detect(statesData$serviceProvidersNotifyCustomers, "immediately") == TRUE | str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE), TRUE, FALSE)
+
+statesData[is.na(statesData)] <- 0
+#statesData$thresholdNotifyAG <- as.numeric(statesData$thresholdNotifyAG)
 ```
 
 ***
@@ -141,7 +150,7 @@ axis_vars <- c(
   "Reporting threshold: number of individuals to notify Attorney General" = "thresholdNotifyAG",
   "Reporting threshold: number of individuals to notify consumer reporting agency" = "thresholdNotifyCRA", 
   "Time Frame within which to notify" = "timeFrame", 
-  "Requirement for \"service provider\" to report to data owner immediately or not" = "serviceProvidersNotifyImmediately", 
+  "Requirement for \"service provider\" to report to data owner immediately or not" = "serviceProvidersNotifyCustomers", 
   "Harm analysis required or not" = "harmAnalysisRequired", 
   "With Financial (vs. online) account as PI" = "financialAccountInformationisPI", 
   "Modified its Laws in 2018-2019" = "modifiedLawsin2018or2019"
@@ -175,7 +184,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -189,7 +198,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -203,7 +212,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -217,7 +226,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -231,7 +240,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -245,7 +254,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -259,7 +268,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -273,7 +282,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -287,7 +296,7 @@ sidebarLayout(
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyImmediately)), 
+                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
                   "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
@@ -500,7 +509,7 @@ axis_vars_graphProportions <- c(
   "Information about Online Accounts is Personal Information" = "hasOnlineAccountsasPI",
   "Definition of Data Breach is access (instead of requiring acquisition)" = "onlyRequiresAccess", 
   "No Private Cause of Action" = "governmentInvolvementRequired",
-  "Service Providers shall Notify customers immediately" = "serviceProvidersNotifyImmediately",
+  "Service Providers shall Notify customers immediately" = "serviceProvidersNotifyCustomers",
   "A Risk-of-harm Analysis is Allowed" = "harmAnalysisAllowed", 
   "Risk-of-harm Analysis is Required" = "harmAnalysisRequired", 
   "Information related to Financial Accounts is Personal Information" = "financialAccountInformationisPI", 
@@ -597,8 +606,8 @@ renderPlot({
                      labels = c("A Private Cause of Action is Permitted", "No Private Cause of Action"))
   }
   
-  else if (input$zvar == "serviceProvidersNotifyImmediately") {
-    ggplot(data = statesData, mapping = aes(x = serviceProvidersNotifyImmediately, fill = serviceProvidersNotifyImmediately)) + 
+  else if (input$zvar == "serviceProvidersNotifyCustomers") {
+    ggplot(data = statesData, mapping = aes(x = serviceProvidersNotifyCustomers, fill = serviceProvidersNotifyCustomers)) + 
   geom_bar() + 
   labs(title = "Proportion of States", x = "", y = "Number of States") + 
   theme(panel.background = element_blank()) + 
@@ -662,12 +671,12 @@ renderPlot({
 
 An "X" means that the state has that quality. 
 
-```{r, message = F, warning = F, echo = F}
-statesDataPresentable <- statesData
+```{r, message = F, warning = F, echo = F, eval = T}
+statesDataPresentable <- statesDataSave
 
 
 
-colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
+colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
 
@@ -683,7 +692,7 @@ statesDataPresentable$`Access` <- ifelse(statesDataPresentable$`Access` == "TRUE
 
 statesDataPresentable$`No Private Cause of Action` <- ifelse(statesDataPresentable$`No Private Cause of Action` == "TRUE", "X", "")
 
-statesDataPresentable$`Notify SP Immediately` <- ifelse(statesDataPresentable$`Notify SP Immediately` == "TRUE", "X", "")
+statesDataPresentable$`SP Notifies Immediately` <- ifelse(statesDataPresentable$`SP Notifies Immediately` == "TRUE", "X", "")
 
 statesDataPresentable$`Harm Analysis Allowed` <- ifelse(statesDataPresentable$`Harm Analysis Allowed` == "TRUE", "X", "")
 
