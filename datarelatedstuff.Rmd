@@ -665,6 +665,8 @@ An "X" means that the state has that quality.
 ```{r, message = F, warning = F, echo = F}
 statesDataPresentable <- statesData
 
+
+
 colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "Notify SP Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
 
 statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
@@ -700,8 +702,8 @@ statesDataPresentable %>% kable() %>% kable_styling() %>% kable_styling(bootstra
 library(grid)
 library(gridExtra)
 
-
-
+# Write this to a .csv file- it's easier to read that way.  
+write.csv(statesDataPresentable, file = "statesDataClean.csv")
 
 ```
 
