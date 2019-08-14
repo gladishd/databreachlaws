@@ -1,55 +1,55 @@
-"","State","DOB is PI","Online Accounts are PI","Access","No Private Cause of Action","Notify AG","Notify CRA","Time Frame","SP Notifies Immediately","Harm Analysis Allowed","Harm Analysis Required","Financial Account Information is PI","Notify AG Required","Modified 2018-2019"
-"1","Alabama","","X","","X","1000","1000","45","","X","X","X","X","X"
-"2","Alaska","","","","","","1000","","","X","X","X","X",""
-"3","Arizona","","X","","X","1000","1000","45","","X","X","X","X","X"
-"4","Arkansas","","","","X","","","","X","X","X","X","","X"
-"5","California","","X","X","","500","","15","X","","","X","X","X"
-"6","Colorado","","X","","X","500","1000","30","X","X","X","X","X","X"
-"7","Connecticut","","","X","X","","","90","X","X","X","X","X","X"
-"8","Delaware","","X","","X","500","","60","X","X","X","X","X",""
-"9","Florida","","X","X","X","500","","30","","X","X","X","X",""
-"10","Georgia","","","","X","","10000","","","","","X","",""
-"11","Hawaii","","","","X","1000","","","X","X","X","X","X","X"
-"12","Idaho","","","","X","","","","X","X","X","X","X",""
-"13","Illinois","","X","","","250","","","X","","","X","X","X"
-"14","Indiana","","","","X","","","","","X","X","X","X",""
-"15","Iowa","","","","X","500","","","X","X","X","X","X","X"
-"16","Kansas","","","","X","","","","","X","X","X","",""
-"17","Kentucky","","","","X","","1000","","","X","X","X","","X"
-"18","Louisiana","","","","","","","60","","X","X","X","X","X"
-"19","Maine","","","","X","","","7","X","X","X","X","X","X"
-"20","Maryland","","X","","","","","45","","X","X","X","X","X"
-"21","Massachusetts","","","","","","","","","X","X","X","X","X"
-"22","Michigan","","","","X","","","","","X","X","X","","X"
-"23","Minnesota","","","","X","","500","","X","","","X","",""
-"24","Mississippi","","","","X","","","","","X","X","X","",""
-"25","Missouri","","","","X","1000","1000","","X","X","X","X","X","X"
-"26","Montana","","","","X","","","","X","X","X","X","X",""
-"27","Nebraska","","X","","X","","","","","X","X","X","X","X"
-"28","Nevada","","X","","","","","","X","X","X","X","",""
-"29","New Hampshire","","","","","","1000","","X","X","X","X","X","X"
-"30","New Jersey","","","X","X","","","","X","X","X","X","X","X"
-"31","New Mexico","","","","X","1000","1000","45","","X","X","X","X","X"
-"32","New York","","","","X","","5000","","X","","","X","X","X"
-"33","North Carolina","","","","","","","","X","X","X","X","X",""
-"34","North Dakota","X","","","X","250","","","X","","","X","X",""
-"35","Ohio","","","","X","250","1000","45","","X","X","X","X","X"
-"36","Oklahoma","","","","X","","","","","X","X","X","",""
-"37","Oregon","","","","","250","1000","45","","X","X","X","X","X"
-"38","Pennsylvania","","","","X","","1000","","","X","X","X","",""
-"39","Rhode Island","","","","X","500","","45","","X","","X","X",""
-"40","South Carolina","","","","","1000","","","X","X","X","X","X","X"
-"41","South Dakota","","X","","X","250","","60","","X","X","X","X","X"
-"42","Tennessee","","","","","","","45","","X","X","X","","X"
-"43","Texas","","","","","","10000","","X","","","X","X","X"
-"44","Utah","","","","X","","","","X","X","X","X","","X"
-"45","Vermont","","","","X","","1000","45","X","X","X","X","X",""
-"46","Virginia","","","","","1000","1000","","","X","X","X","X","X"
-"47","Washington","","","","","500","","45","X","X","X","X","X","X"
-"48","West Virginia","","","","X","","1000","","","X","X","X","",""
-"49","Wisconsin","","","","X","","1000","45","","X","X","X","X",""
-"50","Wyoming","","X","","X","","","","","X","X","X","",""
-"51","District of Columbia","","","","","","","","","","","X","","X"
-"52","Puerto Rico","","","X","","","","","","","","X","X",""
-"53","Virgin Islands","","","","","","","","X","","","X","",""
-"54","Guam","","","","X","","","","","","","X","",""
+,State,DOB is PI,Online Accounts are PI,Access,No Private Cause of Action,Notify AG,Notify CRA,Time Frame,SP Notifies Immediately,Harm Analysis Allowed,Harm Analysis Required,Notify AG Required,Modified 2018-2019,SP notifies as soon as reasonably practicable following discovery,SP notifies as soon as reasonably practicable and without unreasonable delay if PI is likely to be misused,SP notifies as soon as practicable and without unreasonable delay if PI is believed to be acquired by an unauthorized person,SP notifies as soon as practicable if the SP has not entered into a contract with those people whose data has been breached,SP notifies within 24 hours,SP notifies as soon as possible,SP notifies immediately after discovery if PI is reasonably believed to be acquired by an unauthorized person,SP notifies immediately after discovery if misuse of PI is likely to occur,SP notifies immediately after discovery if PI was included in the breached data,SP notifies immediately after discovery consistent with the legitimate needs of law enforcement,SP notifies immediately after discovery either based on the prior conditions or in any circumstance,SP notifies in the most expedient time possible no later than 45 calendar days after discovery,SP notifies in an expeditious manner if acquisition by an unauthorized person occurred and is reasonably believed to cause a material risk of identity theft or fraud,SP notifies in the most expedient time possible after discovery,SP notifies immediately after determination or reasonable belief that information has been breached
+1,Alabama,,X,,X,1000,1000,45,,X,X,X,X,,,,,,,,,,,,,,,
+2,Alaska,,,,,,1000,,,X,X,X,,,,,,,,,,,,X,,,,
+3,Arizona,,X,,X,1000,1000,45,,X,X,X,X,,,,,,X,,,,,,,,,
+4,Arkansas,,,,X,,,,X,X,X,,X,,,,,,,X,,,,X,,,,
+5,California,,X,X,,500,,15,X,,,X,X,,,,,,,X,,,,X,,,,
+6,Colorado,,X,,X,500,1000,30,X,X,X,X,X,,,,,,,,X,,,X,,,,
+7,Connecticut,,,X,X,,,90,X,X,X,X,X,,,,,,,,,,,,,,,X
+8,Delaware,,X,,X,500,,60,X,X,X,X,,,,,,,,,,,,,,,,X
+9,Florida,,X,X,X,500,,30,,X,X,X,,X,,,,,,,,,,,,,,
+10,Georgia,,,,X,,10000,,,,,,,,,,,X,,,,,,,,,,
+11,Hawaii,,,,X,1000,,,X,X,X,X,X,,,,,,,,,,,X,,,,
+12,Idaho,,,,X,,,,X,X,X,X,,,,,,,,,X,,,X,,,,
+13,Illinois,,X,,,250,,,X,,,X,X,,,,,,,X,,,,X,,,,
+14,Indiana,,,,X,,,,,X,X,X,,,,,,,,X,,,,X,,,,
+15,Iowa,,,,X,500,,,X,X,X,X,X,,,,,,,,,X,,X,,,,
+16,Kansas,,,,X,,,,,X,X,,,,,,,,,X,,,,X,,,,
+17,Kentucky,,,,X,,1000,,,X,X,,X,X,,,,,,,,,,,,,,
+18,Louisiana,,,,,,,60,,X,X,X,X,,,,,,,X,,,,X,,,,
+19,Maine,,,,X,,,7,X,X,X,X,X,,,,,,,X,,,,X,,,,
+20,Maryland,,X,,,,,45,,X,X,X,X,,X,,,,,,,,,,,,,
+21,Massachusetts,,,,,,,,,X,X,X,X,,,X,,,,,,,,,,,,
+22,Michigan,,,,X,,,,,X,X,,X,,,,,,,,,,,,,,,
+23,Minnesota,,,,X,,500,,X,,,,,,,,,,,X,,,,X,,,,
+24,Mississippi,,,,X,,,,,X,X,,,,,X,,,,,,,,,,,,
+25,Missouri,,,,X,1000,1000,,X,X,X,X,X,,,,,,,,,,X,X,,,,
+26,Montana,,,,X,,,,X,X,X,X,,,,,,,,X,,,,X,,,,
+27,Nebraska,,X,,X,,,,,X,X,X,X,,,,,,,,,,,,,,,
+28,Nevada,,X,,,,,,X,X,X,,,,,,,,,X,,,,X,,,,
+29,New Hampshire,,,,,,1000,,X,X,X,X,X,,,,,,,X,,,,X,,,,
+30,New Jersey,,,X,X,,,,X,X,X,X,X,,,,,,,X,,,,X,,,,
+31,New Mexico,,,,X,1000,1000,45,,X,X,X,X,,,,,,,,,,,,X,,X,
+32,New York,,,,X,,5000,,X,,,X,X,,,,,,,X,,,,X,,,,
+33,North Carolina,,,,,,,,X,X,X,X,,,,,,,,,,,,X,,,,
+34,North Dakota,X,,,X,250,,,X,,,X,,,,,,,,X,,,,X,,,,
+35,Ohio,,,,X,250,1000,45,,X,X,X,X,,,,,,,,,,,,,X,,
+36,Oklahoma,,,,X,,,,,X,X,,,,,X,,,,,,,,,,,,
+37,Oregon,,,,,250,1000,45,,X,X,X,X,X,,,,,,,,,,,,,,
+38,Pennsylvania,,,,X,,1000,,,X,X,,,,,,,,,,,,,,,,,
+39,Rhode Island,,,,X,500,,45,,X,,X,,,,,,,,,,,,,,,,
+40,South Carolina,,,,,1000,,,X,X,X,X,X,,,,,,,X,,,,X,,,,
+41,South Dakota,,X,,X,250,,60,,X,X,X,X,,,,,,,,,,,,,,,
+42,Tennessee,,,,,,,45,,X,X,,X,,,,,,,,,,,,,,,
+43,Texas,,,,,,10000,,X,,,X,X,,,,,,,X,,,,X,,,,
+44,Utah,,,,X,,,,X,X,X,,X,,,,,,,,X,,,X,,,,
+45,Vermont,,,,X,,1000,45,X,X,X,X,,,,,,,,,,,X,X,,,,
+46,Virginia,,,,,1000,1000,,,X,X,X,X,,,,,,,,,,,,,,,
+47,Washington,,,,,500,,45,X,X,X,X,X,,,,,,,X,,,,X,,,,
+48,West Virginia,,,,X,,1000,,,X,X,,,,,X,,,,,,,,,,,,
+49,Wisconsin,,,,X,,1000,45,,X,X,X,,,,,X,,,,,,,,,,,
+50,Wyoming,,X,,X,,,,,X,X,,,,,X,,,,,,,,,,,,
+51,District of Columbia,,,,,,,,,,,,X,,,,,,,,,,,,,,X,
+52,Puerto Rico,,,X,,,,,,,,X,,,,,,,,,,,,,,,,
+53,Virgin Islands,,,,,,,,X,,,,,,,,,,,X,,,,X,,,,
+54,Guam,,,,X,,,,,,,,,X,,,,,,,,,,,,,,

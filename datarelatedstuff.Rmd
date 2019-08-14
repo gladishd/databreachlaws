@@ -697,7 +697,7 @@ statesDataPresentable <- statesData
 
 colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
 
-statesDataPresentable <- statesDataPresentable[,-ncol(statesDataPresentable)]
+statesDataPresentable <- statesDataPresentable[,-grep("Is a State", colnames(statesDataPresentable))]
 
 statesDataPresentable$`Modified 2018-2019` <- ifelse(statesDataPresentable$`Modified 2018-2019` == "TRUE", "X", "")
 
@@ -724,7 +724,7 @@ statesDataPresentable$`Notify AG Required` <- ifelse(statesDataPresentable$`Noti
 
 library(knitr)
 library(kableExtra)
-statesDataPresentable %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
+statesDataPresentable[1:14] %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
 
 # This doesn't really work
 library(grid)
