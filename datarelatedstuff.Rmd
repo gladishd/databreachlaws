@@ -73,7 +73,7 @@ statesDataSave <- statesData
 ## This part makes the data easy for graphing.  
 statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNotifyAG)) == TRUE, NA, statesData$thresholdNotifyAG)
 
-statesData$serviceProvidersNotifyCustomers <- ifelse((str_detect(statesData$serviceProvidersNotifyCustomers, "immediately") == TRUE | str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE), TRUE, FALSE)
+statesData$serviceProvidersNotifyCustomers <- ifelse((str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE), TRUE, statesData$serviceProvidersNotifyCustomers)
 
 statesData[is.na(statesData)] <- 0
 ```
