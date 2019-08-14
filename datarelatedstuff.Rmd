@@ -71,11 +71,26 @@ statesDataSave <- statesData
 
 
 ## This part makes the data easy for graphing.  
-statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNotifyAG)) == TRUE, NA, statesData$thresholdNotifyAG)
 
-statesData$serviceProvidersNotifyCustomers <- ifelse((str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE), TRUE, statesData$serviceProvidersNotifyCustomers)
+# Remove textual elements from the notify ag column
+statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNotifyAG)) == TRUE, 0, statesData$thresholdNotifyAG)
 
-statesData[is.na(statesData)] <- 0
+statesData$thresholdNotifyAG <- as.integer(statesData$thresholdNotifyAG)
+
+statesData$thresholdNotifyCRA <- ifelse(is.na(as.integer(statesData$thresholdNotifyCRA)) == TRUE, 0, statesData$thresholdNotifyCRA)
+
+statesData$thresholdNotifyCRA <- as.integer(statesData$thresholdNotifyCRA)
+
+statesData$timeFrame <- ifelse(is.na(as.integer(statesData$timeFrame)) == TRUE, 0, statesData$timeFrame)
+
+statesData$timeFrame <- as.integer(statesData$timeFrame)
+
+# Standardize the labels
+statesData$serviceProvidersNotifyCustomers <- ifelse(str_detect(statesData$serviceProvidersNotifyCustomers, "Immediately") == TRUE, TRUE, FALSE)
+
+statesData$serviceProvidersNotifyCustomers[is.na(statesData$serviceProvidersNotifyCustomers)] <- FALSE
+
+#statesData[is.na(statesData)] <- 0
 ```
 
 ***
@@ -671,7 +686,12 @@ renderPlot({
 An "X" means that the state has that quality. 
 
 ```{r, message = F, warning = F, echo = F, eval = T}
-statesDataPresentable <- statesDataSave
+
+statesData[6:8][statesData[6:8] == 0] <- ""
+
+
+
+statesDataPresentable <- statesData
 
 
 
