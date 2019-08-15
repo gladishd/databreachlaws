@@ -53,7 +53,9 @@ statesData <- read_csv("statesSimplified.csv")
 
 
 # Remove unneeded columns
-statesData <- subset(statesData, select = c(1:14))
+#statesData <- subset(statesData, select = c(1:14))
+
+statesData <- statesData
 
 # Replace all NA values with the integer 0
 
@@ -72,7 +74,7 @@ statesDataSave <- statesData
 
 ## This part makes the data easy for graphing.  
 
-# Remove textual elements from the notify ag column
+# Remove textual elements from the notify ag, notify CRA and timeFrame columns
 statesData$thresholdNotifyAG <- ifelse(is.na(as.integer(statesData$thresholdNotifyAG)) == TRUE, 0, statesData$thresholdNotifyAG)
 
 statesData$thresholdNotifyAG <- as.integer(statesData$thresholdNotifyAG)
@@ -193,8 +195,7 @@ sidebarLayout(
      
       selectInput("var", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = c(" " = toString(which(statesData$placeHolderColumn)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
@@ -687,15 +688,20 @@ An "X" means that the state has that quality.
 
 ```{r, message = F, warning = F, echo = F, eval = T}
 
-statesData[6:8][statesData[6:8] == 0] <- ""
-
-
-
+#The order of these two statements is important
 statesDataPresentable <- statesData
+statesDataPresentable[6:8][statesDataPresentable[6:8] == 0] <- ""
 
 
 
-colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "Is a State")
+
+
+
+
+colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "as soon as possible", "as soon as reasonably practicable after discovery", "within 24 hours", "immediately after discovery if PI is acquired by an unauthorized person", "immediately after discovery if misuse of PI is likely to occur", "immediately after determination or reasonable belief that information has been breached", "immediately after discovery if PI was included in the breached data", "immediately after discovery, consistent with the legitimate needs of law enforcement", "immediately after discovery in all cases", "as soon as reasonably practicable and without unreasonable delay if Pi is likely to be misused", "as soon as reasonably practicable and without unreasonable delay if PI is acquired by an unauthorized person", "in the most expedient time possible but no later than 45 calendar days after discovery", "in an expeditious manner if acquisition by an unauthorized person occurred and is reasonably believed to cause a material risk of identity theft or fraud", "as soon as practicable if the service provider has not entered into a contract", "in the most expedient time possible after discovery", "Is a State")
+
+
+
 
 statesDataPresentable <- statesDataPresentable[,-grep("Is a State", colnames(statesDataPresentable))]
 
@@ -722,6 +728,9 @@ statesDataPresentable$`Financial Account Information is PI` <- ifelse(statesData
 statesDataPresentable$`Notify AG Required` <- ifelse(statesDataPresentable$`Notify AG Required` == "TRUE", "X", "")
 
 
+statesDataPresentable[15:29] <- ifelse(statesDataPresentable[15:29] == "TRUE", "X", "")
+
+
 library(knitr)
 library(kableExtra)
 statesDataPresentable[1:14] %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
@@ -729,6 +738,15 @@ statesDataPresentable[1:14] %>% kable() %>% kable_styling() %>% kable_styling(bo
 # This doesn't really work
 library(grid)
 library(gridExtra)
+
+
+```
+
+```{r, eval = T, echo = F}
+
+secondTable <- cbind(statesDataPresentable[1], statesDataPresentable[15:29])
+
+secondTable %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
 
 # Write this to a .csv file- it's easier to read that way.  
 write.csv(statesDataPresentable, file = "statesDataClean.csv")
