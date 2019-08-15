@@ -382,89 +382,58 @@ sliderInput("range3",
 
 renderUI({
  
+  default <- 1:54
+  
+  if (length(input$checkGroup) != 0) {
+    for (i in 1:length(input$checkGroup)) {
+      default <- intersect(default, as.integer(gsub(" ", "", as.integer(unlist(strsplit(input$checkGroup[i], ", "))))))
+    }
+  }
+  
+  
+  
+
+  
   HTML(str_replace_all(toString(
     paste(toString(statesData[
       
       
-      #Reduce(intersect, list(as.integer(checkGroup)))
-      
-      
-      intersect( #Variable 9
+      Reduce(intersect, list(
+        
+        default,
         
         as.integer(unlist(strsplit(input$var9, split = ", "))),
-      
-      intersect( #Variable 8
         
         as.integer(unlist(strsplit(input$var8, split = ", "))),
-      
-      intersect( #Variable 7
         
         as.integer(unlist(strsplit(input$var7, split = ", "))),
-      
-      intersect( #Variable 6
         
         as.integer(unlist(strsplit(input$var6, split = ", "))),
-      
-      intersect( #Variable 5
         
         as.integer(unlist(strsplit(input$var5, split = ", "))),
-      
-      intersect( #Variable 4
         
         as.integer(unlist(strsplit(input$var4, split = ", "))),
-      
-      intersect( #Variable 3
         
         as.integer(unlist(strsplit(input$var3, split = ", "))),
-      
-      intersect( #Variable 2
         
         as.integer(unlist(strsplit(input$var2, split = ", "))),
-      
-      
-      intersect( #Variable 1
-      
-      as.integer(unlist(strsplit(input$var, split = ", "))), 
-      
-      
-      #
-      intersect(intersect(which(statesData$timeFrame >= input$range3[1]), which(statesData$timeFrame <= input$range3[2])), # Range 3
-      
-      intersect(
         
+        as.integer(unlist(strsplit(input$var, split = ", "))), 
         
-        intersect(which(statesData$thresholdNotifyAG >= input$range[1]), which(statesData$thresholdNotifyAG <= input$range[2])), # Range 1
+        which(statesData$timeFrame >= input$range3[1]), 
         
-        intersect(which(statesData$thresholdNotifyCRA >= input$range2[1]), which(statesData$thresholdNotifyCRA <= input$range2[2])) # Range 2
+        which(statesData$timeFrame <= input$range3[2]),
         
+        which(statesData$thresholdNotifyAG >= input$range[1]), 
         
-      )
+        which(statesData$thresholdNotifyAG <= input$range[2]), 
+        
+        which(statesData$thresholdNotifyCRA >= input$range2[1]), 
+        
+        which(statesData$thresholdNotifyCRA <= input$range2[2])
+        
+        ))
       
-      )
-      
-      #
-      
-      
-      
-      
-      
-      )
-      
-      )
-      
-      )
-      
-      )
-      
-      )
-      
-      )
-      
-      )
-      
-      )
-      
-      )
       
       ,]$State))
     )
