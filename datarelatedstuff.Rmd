@@ -181,27 +181,7 @@ library(stringr)
 
 
 
-
-
-
-#sidebarLayout
-sidebarLayout(
-  
-  #sidebarPanel
-    inputPanel(
-  
-      #helpText(""),
-      
-     
-      selectInput("var", 
-                  label = "",
-                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
-                                 
-                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
-                                 
-                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
-                                 
-                                 "Service Providers need to notify customers" = c("as soon as possible" = toString(which(statesData$asSoonAsPossible)),
+listServiceProviders = list("as soon as possible" = toString(which(statesData$asSoonAsPossible)),
 "as soon as reasonably practicable after discovery" = toString(which(statesData$asSoonAsReasonablyPracticableFollowingDiscovery)),
 "within 24 hours" = toString(which(statesData$within24Hours)),
 "immediately after discovery if PI is acquired by an unauthorized person" = toString(which(statesData$immediatelyAfterDiscoveryifPIAcquiredbyUnauthorizedPerson)),
@@ -217,7 +197,45 @@ sidebarLayout(
 "as soon as practicable if the service provider has not entered into a contract" = toString(which(statesData$asSoonAsPracticableifServiceProviderhasnotenteredintoaContract)),
 "in the most expedient time possible after discovery" = toString(which(statesData$inMostExpedientTimePossibleAfterDiscovery))
 
-),
+)
+
+
+#sidebarLayout
+sidebarLayout(
+  
+  #sidebarPanel
+    inputPanel(
+  
+      #helpText(""),
+      
+       
+checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
+    choices = listServiceProviders,
+    selected = 1),
+  
+  
+  hr(),
+  fluidRow(column(3, verbatimTextOutput("value"))),
+      
+      
+     
+      selectInput("var", 
+                  label = "",
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
                                   
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
                   
@@ -366,6 +384,10 @@ renderUI({
  
   HTML(str_replace_all(toString(
     paste(toString(statesData[
+      
+      
+      #Reduce(intersect, list(as.integer(checkGroup)))
+      
       
       intersect( #Variable 9
         
