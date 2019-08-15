@@ -195,12 +195,35 @@ sidebarLayout(
      
       selectInput("var", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)), "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers" = c("as soon as possible" = toString(which(statesData$asSoonAsPossible)),
+"as soon as reasonably practicable after discovery" = toString(which(statesData$asSoonAsReasonablyPracticableFollowingDiscovery)),
+"within 24 hours" = toString(which(statesData$within24Hours)),
+"immediately after discovery if PI is acquired by an unauthorized person" = toString(which(statesData$immediatelyAfterDiscoveryifPIAcquiredbyUnauthorizedPerson)),
+"immediately after discovery if misuse of PI is likely to occur" = toString(which(statesData$immediatelyAfterDiscoveryIfPIMisuseisLikelyToOccur)),
+"immediately after determination or reasonable belief that information has been breached" = toString(which(statesData$immediatelyAfterDeterminationorReasonableBeliefthatInformationhasBeenBreached)),
+"immediately after discovery if PI was included in the breached data" = toString(which(statesData$immediatelyAfterDiscoveryifPIWasIncludedinBreachedData)),
+"immediately after discovery, consistent with the legitimate needs of law enforcement" = toString(which(statesData$immediatelyAfterDiscoveryConsistentWithLegitimateNeedsofLawEnforcement)),
+"immediately after discovery in all cases" = toString(which(statesData$immediatelyAfterDiscovery)),
+"as soon as reasonably practicable and without unreasonable delay if Pi is likely to be misused" = toString(which(statesData$asSoonAsReasonablyPracticableandWithoutUnreasonableDelayifPIisLikelyToBeMisused)),
+"as soon as reasonably practicable and without unreasonable delay if PI is acquired by an unauthorized person" = toString(which(statesData$asSoonAsReasonablyPracticableandWithoutUnreasonableDelayifPIisAcquiredbyUnauthorizedPerson)),
+"in the most expedient time possible but no later than 45 calendar days after discovery" = toString(which(statesData$inMostExpedientTimePossibleNoLaterThan45CalendarDays)),
+"in an expeditious manner if acquisition by an unauthorized person occurred and is reasonably believed to cause a material risk of identity theft or fraud" = toString(which(statesData$inAnExpeditiousMannerifAcquisitionbyUnauthorizedPersonExistsandisReasonablyBelievedtoCauseaMaterialRiskofIdentityTheftorFraud)),
+"as soon as practicable if the service provider has not entered into a contract" = toString(which(statesData$asSoonAsPracticableifServiceProviderhasnotenteredintoaContract)),
+"in the most expedient time possible after discovery" = toString(which(statesData$inMostExpedientTimePossibleAfterDiscovery))
+
+),
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
