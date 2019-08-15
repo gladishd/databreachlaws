@@ -25,24 +25,8 @@ library(knitr)
 
 ```
 
-***
 
-## _Let's Begin_
-
-***
-
-During the last decade, the topic of data privacy and security has been increasing in importance as more companies (which are disproportionately hospitals and universities) are breached. Even by January of 2010 over 354 million pieces of personally identifying information (PII) had been compromised and 46 states had enacted legislation requiring companies to protect consumers by notifying them about personal information (PI) breaches. 
-
-\ \ \ \ \ \ \ In February of 2005, consumer data broker ChoicePoint (the Company) ended up paying a $10 million fine in restitution to identity theft victims. What happened was that over 145,000 consumers' information (including names, addresses, social security numbers, driver's license numbers, credit reports and other financial information) was sold by ChoicePoint to scammers posing as legitimate businesses who then gained access to this information. And because of disparate laws among states in which only some state laws required notification, the Company chose to initially disclose the breach only to California residents.  
-
-
-\ \ \ \ \ \ \ Recently, more states have enacted legislation requiring notification to consumers, consumer reporting agencies (CRAs) and/or state regulators. Some of these laws allow for a private cause of action (which may require proving actual damages caused by a data breach or notification failure), and some have created additional laws; in particular, Minnesota enacted the "Plastic Card Security Act," which transfers the cost of card-related breaches from financial institutions to retail institutions. Additionally, since there have been more state and federal laws proposed, it's important to have a general understanding.  
-
-\ \ \ \ \ \ \ This document is just an overview of requirements, for different states, that some entities (like service providers) need to fulfill to comply with state laws after a data incident or data breach. I wanted to create a document which also gives helpful graphs and which can be updated. This is important because although current state laws generally do not conflict with each other they have vast differences which can make obligations to consumers unclear and ambiguous. With this in mind we are obligated to provide effective support to affected individuals within the current situation. 
-
-
-
-\ \ \ \ \ \ \ That's the purpose of this document.    
+  
 
 ```{r Load and wrangle data, message = FALSE, warning = FALSE, echo = FALSE}
 
@@ -189,7 +173,7 @@ listServiceProviders = list("as soon as possible" = toString(which(statesData$as
 "immediately after determination or reasonable belief that information has been breached" = toString(which(statesData$immediatelyAfterDeterminationorReasonableBeliefthatInformationhasBeenBreached)),
 "immediately after discovery if PI was included in the breached data" = toString(which(statesData$immediatelyAfterDiscoveryifPIWasIncludedinBreachedData)),
 "immediately after discovery, consistent with the legitimate needs of law enforcement" = toString(which(statesData$immediatelyAfterDiscoveryConsistentWithLegitimateNeedsofLawEnforcement)),
-"immediately after discovery in all cases" = toString(which(statesData$immediatelyAfterDiscovery)),
+"immediately after discovery (possibly conditional)" = toString(which(statesData$immediatelyAfterDiscovery)),
 "as soon as reasonably practicable and without unreasonable delay if Pi is likely to be misused" = toString(which(statesData$asSoonAsReasonablyPracticableandWithoutUnreasonableDelayifPIisLikelyToBeMisused)),
 "as soon as reasonably practicable and without unreasonable delay if PI is acquired by an unauthorized person" = toString(which(statesData$asSoonAsReasonablyPracticableandWithoutUnreasonableDelayifPIisAcquiredbyUnauthorizedPerson)),
 "in the most expedient time possible but no later than 45 calendar days after discovery" = toString(which(statesData$inMostExpedientTimePossibleNoLaterThan45CalendarDays)),
@@ -208,14 +192,18 @@ sidebarLayout(
   
       #helpText(""),
       
+      shinyjs::useShinyjs(),
+  tags$style(css),
+  div(id = "btn",
        
-checkboxGroupInput("checkGroup", label = h3("Checkbox group"), 
+checkboxGroupInput("checkGroup", label = h3("Service Providers shall notify customers"), 
     choices = listServiceProviders,
-    selected = 1),
+    selected = 1, inline = FALSE),
   
   
   hr(),
-  fluidRow(column(3, verbatimTextOutput("value"))),
+  fluidRow(column(3, verbatimTextOutput("value")))
+),
       
       
      
@@ -249,13 +237,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var2", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -263,13 +265,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var3", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -277,13 +293,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var4", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -291,13 +321,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var5", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -305,13 +349,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var6", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -319,13 +377,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var7", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -333,13 +405,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var8", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -347,13 +433,27 @@ checkboxGroupInput("checkGroup", label = h3("Checkbox group"),
       
       selectInput("var9", 
                   label = "",
-                  choices = c(" " = toString(which(statesData$placeHolderColumn)),
-                    "Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI)), 
+                  choices = list(" " = toString(which(statesData$placeHolderColumn)), 
+                                 
+                                 "Personal Information" = c("Date of Birth alone is PI" = toString(which(statesData$hasDOBasPI)), "Information about Online Accounts is PI" = toString(which(statesData$hasOnlineAccountsasPI))),
+                                 
+                                 "Harm Analysis" = c("Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),"Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired))),
+                                 
+                                 "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)),
+                                 
+                                
+
+
+
+
+
+
+                                  
                   "Access only (instead of acquisition as well) is a breach of security" = toString(which(statesData$onlyRequiresAccess)), 
-                  "Risk-of-harm Analysis is Allowed" = toString(which(statesData$harmAnalysisAllowed)),
+                  
                   "A Private Cause of Action is not Permitted" = toString(which(statesData$governmentInvolvementRequired)),
-                  "Service Providers need to notify customers immediately" = toString(which(statesData$serviceProvidersNotifyCustomers)), 
-                  "Harm Analysis is Required" = toString(which(statesData$harmAnalysisRequired)),
+                  
+                  
                   "Information about Financial Accounts is PI" = toString(which(statesData$financialAccountInformationisPI)), 
                   "Attorney General needs to be notified in some way" = toString(which(statesData$notifyAGRequired)), 
                   "Modified its laws in 2018 or 2019" = toString(which(statesData$modifiedLawsin2018or2019))), 
@@ -712,7 +812,7 @@ statesDataPresentable[6:8][statesDataPresentable[6:8] == 0] <- ""
 
 
 
-colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "as soon as possible", "as soon as reasonably practicable after discovery", "within 24 hours", "immediately after discovery if PI is acquired by an unauthorized person", "immediately after discovery if misuse of PI is likely to occur", "immediately after determination or reasonable belief that information has been breached", "immediately after discovery if PI was included in the breached data", "immediately after discovery, consistent with the legitimate needs of law enforcement", "immediately after discovery in all cases", "as soon as reasonably practicable and without unreasonable delay if Pi is likely to be misused", "as soon as reasonably practicable and without unreasonable delay if PI is acquired by an unauthorized person", "in the most expedient time possible but no later than 45 calendar days after discovery", "in an expeditious manner if acquisition by an unauthorized person occurred and is reasonably believed to cause a material risk of identity theft or fraud", "as soon as practicable if the service provider has not entered into a contract", "in the most expedient time possible after discovery", "Is a State")
+colnames(statesDataPresentable) <- c("State", "DOB is PI", "Online Accounts are PI", "Access", "No Private Cause of Action", "Notify AG", "Notify CRA", "Time Frame", "SP Notifies Immediately", "Harm Analysis Allowed", "Harm Analysis Required", "Financial Account Information is PI", "Notify AG Required", "Modified 2018-2019", "as soon as possible", "as soon as reasonably practicable after discovery", "within 24 hours", "immediately after discovery if PI is acquired by an unauthorized person", "immediately after discovery if misuse of PI is likely to occur", "immediately after determination or reasonable belief that information has been breached", "immediately after discovery if PI was included in the breached data", "immediately after discovery, consistent with the legitimate needs of law enforcement", "immediately after discovery (possibly conditional)", "as soon as reasonably practicable and without unreasonable delay if Pi is likely to be misused", "as soon as reasonably practicable and without unreasonable delay if PI is acquired by an unauthorized person", "in the most expedient time possible but no later than 45 calendar days after discovery", "in an expeditious manner if acquisition by an unauthorized person occurred and is reasonably believed to cause a material risk of identity theft or fraud", "as soon as practicable if the service provider has not entered into a contract", "in the most expedient time possible after discovery", "Is a State")
 
 
 
@@ -760,6 +860,7 @@ library(gridExtra)
 
 secondTable <- cbind(statesDataPresentable[1], statesDataPresentable[15:29])
 
+colnames(secondTable)[1] <- "SP Notifies Customers"
 secondTable %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
 
 # Write this to a .csv file- it's easier to read that way.  
@@ -813,6 +914,22 @@ Furthermore: the definition regarding service providers (and other third parties
 
 
 
+***
+## _Some history (out of date)_
+***
+
+During the last decade, the topic of data privacy and security has been increasing in importance as more companies (which are disproportionately hospitals and universities) are breached. Even by January of 2010 over 354 million pieces of personally identifying information (PII) had been compromised and 46 states had enacted legislation requiring companies to protect consumers by notifying them about personal information (PI) breaches. 
+
+\ \ \ \ \ \ \ In February of 2005, consumer data broker ChoicePoint (the Company) ended up paying a $10 million fine in restitution to identity theft victims. What happened was that over 145,000 consumers' information (including names, addresses, social security numbers, driver's license numbers, credit reports and other financial information) was sold by ChoicePoint to scammers posing as legitimate businesses who then gained access to this information. And because of disparate laws among states in which only some state laws required notification, the Company chose to initially disclose the breach only to California residents.  
+
+
+\ \ \ \ \ \ \ Recently, more states have enacted legislation requiring notification to consumers, consumer reporting agencies (CRAs) and/or state regulators. Some of these laws allow for a private cause of action (which may require proving actual damages caused by a data breach or notification failure), and some have created additional laws; in particular, Minnesota enacted the "Plastic Card Security Act," which transfers the cost of card-related breaches from financial institutions to retail institutions. Additionally, since there have been more state and federal laws proposed, it's important to have a general understanding.  
+
+\ \ \ \ \ \ \ This document is just an overview of requirements, for different states, that some entities (like service providers) need to fulfill to comply with state laws after a data incident or data breach. I wanted to create a document which also gives helpful graphs and which can be updated. This is important because although current state laws generally do not conflict with each other they have vast differences which can make obligations to consumers unclear and ambiguous. With this in mind we are obligated to provide effective support to affected individuals within the current situation. 
+
+
+
+\ \ \ \ \ \ \ That's the purpose of this document.  
 
 
 
