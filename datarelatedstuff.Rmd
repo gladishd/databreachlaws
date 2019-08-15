@@ -849,9 +849,7 @@ library(knitr)
 library(kableExtra)
 statesDataPresentable[1:14] %>% kable() %>% kable_styling() %>% kable_styling(bootstrap_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), latex_options = c( "scale_down", "hover", "condensed", "responsive", full_width = F), font_size = 12)
 
-# This doesn't really work
-library(grid)
-library(gridExtra)
+
 
 
 ```
@@ -1060,12 +1058,6 @@ Additional resources about data breach laws:
 <hr />
 <p style="text-align: center;">By <a href="https://github.com/gladishd/">Dean Gladish</a></p>
 <p style="text-align: center;"><span style="color: #808080;"><em>gladish.dean@gmail.com</em></span></p>
-
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
 &nbsp;
 
 
